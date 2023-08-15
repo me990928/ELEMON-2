@@ -6,6 +6,8 @@
 //
 import SwiftUI
 
+
+//header部分
 struct headerView: View {
     @ObservedObject var viewModel = ListViewModel.shared
     var body: some View {

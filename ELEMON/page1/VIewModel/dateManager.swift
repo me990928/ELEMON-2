@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+//data関連
 class dateManager: ObservableObject{
     @Published var dateItem: [String] = []
     
