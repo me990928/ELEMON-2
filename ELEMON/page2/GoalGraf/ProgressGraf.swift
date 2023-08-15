@@ -8,27 +8,32 @@
 import SwiftUI
 import Charts
 
-struct ProgressGraf: View {
 
-    let data: [progressCharts] = [
-        .init(title: "day1", value: 10),
-        .init(title: "day2", value: 20),
-        .init(title: "day3", value: 40),
-        .init(title: "day4", value: 10),
-        .init(title: "day5", value: 20),
-        .init(title: "day6", value: 40),
-        .init(title: "day7", value: 30)
-    ]
+struct ProgressGraf: View {
+    @ObservedObject var progressModel = ProgressViewModel()
     
     
     var body: some View {
+        
         VStack{
-            Chart(data){ point in
-                BarMark(
-                    x: .value("title", point.title),
-                    y: .value("name", point.value)
-                ).foregroundStyle(point.color)
+            Chart{
+                ForEach(progressModel.dateItem,id: \.self){ items in
+                    if let item = progressModel.progress.first(where: { $0.date == items}) {
+                        let itemValue = item.value
+                        BarMark(
+                            x: .value("date", items),
+                            y: .value("value", itemValue)
+                        ).foregroundStyle(Color.blue)
+                    } else {
+                        BarMark(
+                            x: .value("date", items),
+                            y: .value("value", 0)
+                        ).foregroundStyle(Color.blue)
+                    }
+                }
+                
             }
+           
         }
     }
 }
@@ -38,3 +43,4 @@ struct grafView_Previews: PreviewProvider {
         ProgressGraf()
     }
 }
+

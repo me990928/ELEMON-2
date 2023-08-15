@@ -9,17 +9,15 @@ import Foundation
 import SwiftUI
 
 struct ProgressBar: View {
-    
-    @ObservedObject var viewModel = ProgressViewModel()
-    
+
+    @ObservedObject var progressModel = ProgressViewModel.shared
     
     //@State var progressValue2: CGFloat = 0.4
     //@State var progressValue3: CGFloat = 0.4
-    
-    
+ 
     var body: some View {
         
-        @State var progressValue:CGFloat = CGFloat(viewModel.nowValue)/CGFloat(viewModel.goalValue)
+        @State var progressValue:CGFloat = CGFloat(progressModel.todayItem())/CGFloat(progressModel.goalValue)
         
         VStack{
             
@@ -47,13 +45,13 @@ struct ProgressBar: View {
                     .rotationEffect(Angle(degrees: 270.0))
                 
                 VStack{
-                    Text("\(viewModel.goalString)")
+                    Text("\(progressModel.goalString)")
                         .foregroundColor(Color.gray)
                     // 進捗率のテキスト
                     Text(String(format: "%.0f%%", min(progressValue, 1.0) * 100.0))
                         .font(.largeTitle)
                         .bold()
-                    Text("\(viewModel.nowValue)分/\(viewModel.goalValue)分")
+                    Text("\(progressModel.todayItem())分/\(progressModel.goalValue)分")
                         .foregroundColor(Color.gray)
                     
                 }

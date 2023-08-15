@@ -30,14 +30,22 @@ struct MindFullnessSampleView: View {
                     
                     HStack {
                         Spacer()
-                        if let lastMindTime = healthSleep.MindTime.last {
+                        let nowDate = getCurrentDate()
+                        if let lastMindTime = healthSleep.MindTime.first(where: { $0.date == nowDate }){
                             Text(lastMindTime.value)
                                 .font(.largeTitle)
                                 .foregroundColor(.primary)
                                 .padding(.horizontal, 10)
                                 .onAppear {
                                     model.mindTime = lastMindTime.value
-                                    
+                                }
+                        } else {
+                            Text("0時間00分")
+                                .font(.largeTitle)
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 10)
+                                .onAppear {
+                                    model.mindTime = "0時間00分"
                                 }
                     
                         }
@@ -56,6 +64,17 @@ struct MindFullnessSampleView: View {
             }.padding()
             Spacer()
         }
+    }
+    func getCurrentDate() -> String {
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        let dateStr = formatter.string(from: date as Date)
+        formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEEEE", options: 0, locale: Locale.current)
+        //let weekStr = formatter.string(from: date as Date)
+        //return  dateStr + " (" + weekStr + ")"
+        return dateStr//00/00を返す
     }
 }
 

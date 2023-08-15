@@ -8,25 +8,13 @@
 import Foundation
 import HealthKit
 
-
-struct SleepData:Identifiable {
-    var id: String
-    var startDate: Date
-    var endDate: Date
-    var status: Int
-}
-
 class HealthSleep: ObservableObject{
-
     
     //healthKitのデータへのアクセスポイント
     let healthStore = HKHealthStore()
 
     @Published var sleepTime:[SleepGraf] = []
     @Published var MindTime:[SleepGraf] = []
-    
-    
-    var sleepData:[SleepData] = []
 
     //データの読み取り、書き込みを許可するかどうかの確認
     func getHealthKitData() {
@@ -49,43 +37,32 @@ class HealthSleep: ObservableObject{
             if success {
                 DispatchQueue.main.async {
 
-                    var i = 6
-                    var n = 6
-                    
-                    self.fetchSleepTime(){ sleepTime in
+                    self.fetchSleepTime(){ sleepTime,sleepDate in
                         
                         DispatchQueue.main.async {
+                            //print("\(sleepTime)")
                             let sleepTimeString = sleepTime.map { self.timeString(from: $0) } ?? "0時間00分"
-                            let days = Calendar.current.date(byAdding: .day,value: -i, to: Date())!
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "MM/dd"
-                            let dateStr = formatter.string(from: days as Date)
-                            formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
+                            let sleepDateString = sleepDate ?? ""
+
                             
-                            let item = SleepGraf(value: sleepTimeString,date: dateStr)
+                            let item = SleepGraf(value: sleepTimeString,date: sleepDateString)
                             self.sleepTime.append(item)
                             //print(self.sleepTime)
                             //print(i)
-                            i -= 1
+
                             
                         }
-                        print(success)
+                        //print(self.sleepTime)
                     }
                     //sleepおわり
                     
-                    self.fetchMind(){ mindTime in
+                    self.fetchMind(){ mindTime,mindDate in
                         DispatchQueue.main.async {
                             let sleepTimeString = mindTime.map { self.timeString(from: $0) } ?? "0時間00分"
-                            let days = Calendar.current.date(byAdding: .day,value: -n, to: Date())!
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "MM/dd"
-                            let dateStr = formatter.string(from: days as Date)
-                            formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
+                            let mindDateString = mindDate ?? ""
                             
-                            let item = SleepGraf(value: sleepTimeString,date: dateStr)
+                            let item = SleepGraf(value: sleepTimeString,date: mindDateString)
                             self.MindTime.append(item)
-                            
-                            n -= 1
                             
                         }
                         //print(self.MindTime)
@@ -117,7 +94,7 @@ class HealthSleep: ObservableObject{
         return predicate
     }
     //sleep日毎集計
-    func fetchSleepTime(completion: @escaping (Double?) -> Void){
+    /*func fetchSleepTime(completion: @escaping (Double?) -> Void){
         guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
             completion(nil)
             return
@@ -138,62 +115,112 @@ class HealthSleep: ObservableObject{
                 
                 let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
                 
-//                let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: endOfDay, options: .strictStartDate)
+                let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: endOfDay, options: .strictStartDate)
                 
-                let calendar = Calendar.current
-                let startDate = calendar.startOfDay(for: Date())
-                let endDate = calendar.date(byAdding: .day, value: -6, to: startDate)!
-
-                let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-                       
-                
-                let query = HKSampleQuery(sampleType: sleepType, predicate: HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .month, value: -1, to: Date())!, end: Date(), options: []), limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
+                let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
                     guard let samples = samples as? [HKCategorySample], error == nil else {
                         completion(nil)
                         return
                     }
                     
-                    
-                    for i in samples {
-//                        print("状態：\(i.value)")
-                        print("開始：\(i.startDate)")
-                        print("終了：\(i.endDate)")
-                        
-                        self.sleepData.append(SleepData(id: UUID().uuidString ,startDate: i.startDate, endDate: i.endDate, status: i.value))
-                        
-                    }
-                    
-                    for i in self.sleepData {
-                        print(i.startDate)
-                    }
-                    
                     var totalTimeAsleep = 0.0
+                    var formattedDate = ""
                     
                     for sample in samples {
+                        
                         let startSleep = sample.startDate
                         let endSleep = sample.endDate
                         let duration = endSleep.timeIntervalSince(startSleep)
+//                        print("*******************************************:")
+//                        print(endSleep)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MM/dd"
+                        formattedDate = dateFormatter.string(from: endSleep)
+//                        print("+++++++++++++++++++++++++++++++++++++++++++++++")
+//                        print(formattedDate)
                         
                         totalTimeAsleep += duration
+                        
                     }
                     completion(totalTimeAsleep)
                 }
+//                print("+++++++++++++++++++++++++++++++++++++++++++++++")
+//                print(query)
+                self.healthStore.execute(query)
+            }
+            
+        }
+        
+    }*/
+
+    func fetchSleepTime(completion: @escaping (Double?,String?) -> Void){
+        guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
+            completion(nil,nil)
+            return
+        }
+        healthStore.requestAuthorization(toShare: nil, read: [sleepType]) { (success, error) in
+            guard success else {
+                completion(nil,nil)
+                return
+            }
+            let calendar = Calendar.current
+            let endDate = Date()
+            for i in (0..<7).reversed(){
+               // print(i)
+                //hour 15 で日本時間の0:00分に戻してる。
+                let agoDay = calendar.date(byAdding: DateComponents(day: -i, hour: 15), to: endDate)!
+                let start = calendar.startOfDay(for: agoDay)
+                let startOfDay = calendar.date(byAdding: .hour, value: -3, to: start)!
+                
+                let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+                
+                let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: endOfDay, options: .strictStartDate)
+                
+                let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
+                    guard let samples = samples as? [HKCategorySample], error == nil else {
+                        completion(nil,nil)
+                        return
+                    }
+                    
+                    var totalTimeAsleep = 0.0
+                    var formattedDate = ""
+                    
+                    for sample in samples {
+                        
+                        let startSleep = sample.startDate
+                        let endSleep = sample.endDate
+                        let duration = endSleep.timeIntervalSince(startSleep)
+//                        print("*******************************************:")
+//                        print(endSleep)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MM/dd"
+                        formattedDate = dateFormatter.string(from: endSleep)
+//                        print("+++++++++++++++++++++++++++++++++++++++++++++++")
+//                        print(formattedDate)
+                        
+                        totalTimeAsleep += duration
+                        
+                    }
+                    completion(totalTimeAsleep,formattedDate)
+                }
+//                print("+++++++++++++++++++++++++++++++++++++++++++++++")
+//                print(query)
                 self.healthStore.execute(query)
             }
             
         }
         
     }
-
+    
     //マインドフルネスを取得
-    func fetchMind(completion: @escaping (Double?) -> Void){
+    func fetchMind(completion: @escaping (Double?,String?) -> Void){
         guard let mindType = HKCategoryType.categoryType(forIdentifier: .mindfulSession) else {
-            completion(nil)
+            completion(nil,nil)
             return
         }
         healthStore.requestAuthorization(toShare: nil, read: [mindType]) { (success, error) in
             guard success else {
-                completion(nil)
+                completion(nil,nil)
                 return
             }
             let calendar = Calendar.current
@@ -209,20 +236,25 @@ class HealthSleep: ObservableObject{
                 
                 let query = HKSampleQuery(sampleType: mindType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
                     guard let samples = samples as? [HKCategorySample], error == nil else {
-                        completion(nil)
+                        completion(nil,nil)
                         return
                     }
                     
                     var totalMind = 0.0
+                    var formattedDate = ""
                     
                     for sample in samples {
                         let startDate = sample.startDate
                         let endDate = sample.endDate
                         let duration = endDate.timeIntervalSince(startDate)
                         
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MM/dd"
+                        formattedDate = dateFormatter.string(from: endDate)
+                        
                         totalMind += duration
                     }
-                    completion(totalMind)
+                    completion(totalMind,formattedDate)
                 }
                 self.healthStore.execute(query)
             }

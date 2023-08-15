@@ -23,6 +23,14 @@ final class HealthViewModel: ObservableObject {
         return formatter
         //最後の()は、クロージャを即時に実行するための記法
     }()
+    
+    let dateFormatter2: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM月"
+        return formatter
+        //最後の()は、クロージャを即時に実行するための記法
+    }()
+    
     //２つの値の初期化
     init(health: Health, repository: HKRepository){
         self.health = health

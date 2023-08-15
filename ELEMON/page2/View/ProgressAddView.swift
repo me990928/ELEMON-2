@@ -13,14 +13,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ProgressAddView: View {
-    @ObservedObject var viewModel = ProgressViewModel()
+    @ObservedObject var progressModel = ProgressViewModel.shared
     @Environment(\.dismiss) var dismiss
     
-    @State var nowValue:Int = 0
-    @State var goalValue:Int = 0
-    
+    @State private var showingAlert = false
+    @State var addValue = 0
     
     var body: some View {
         
@@ -33,7 +33,7 @@ struct ProgressAddView: View {
             Text("目標名").font(.title2)
             
             HStack{
-                TextField("",text: $viewModel.goalString)
+                TextField("",text: $progressModel.goalString)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 200)
                     .multilineTextAlignment(TextAlignment.center)
@@ -42,19 +42,26 @@ struct ProgressAddView: View {
             Text("1日の目標勉強時間").font(.title2)
             
             HStack{
-                TextField("",value: $viewModel.goalValue,formatter: NumberFormatter())
+                TextField("",value: $progressModel.goalValue,formatter: NumberFormatter())
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 100)
                     .multilineTextAlignment(TextAlignment.center)
-                Text("分")
+                    .onReceive(Just(progressModel.goalValue)) { newValue in
+                        // 入力された値が1未満の場合、1に制限する
+                        if newValue < 1 {
+                            progressModel.goalValue = 1
+                            showingAlert = true
+                        }
+                    }.alert("1以上の数字を入力してください", isPresented: $showingAlert) {}
+                    Text("分")
+                    
             }.padding(.bottom, 10.0)
             
             
             
-            Text("今日の勉強時間").font(.title2)
-            
+            Text("勉強した時間").font(.title2)
             HStack{
-                TextField("",value: $viewModel.nowValue,formatter: NumberFormatter())
+                TextField("",value: $addValue,formatter: NumberFormatter())
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 100)
                     .multilineTextAlignment(TextAlignment.center)
@@ -63,6 +70,11 @@ struct ProgressAddView: View {
             
             
             Button("完了"){
+                progressModel.nowValue = addValue
+                progressModel.progressGudg()
+                addValue = 0
+                
+                //progressModel.tameshi()
                 dismiss()
             }
             Spacer()

@@ -12,16 +12,17 @@ import HealthKit
 struct ChartView2: View {
   let stats: [HealthStat]
   var health: Health
+    let color: Color
   @ObservedObject var viewModel: HealthViewModel
   
   var body: some View {
         Chart {
           
           ForEach(stats) { stat in
-            BarMark(x: .value("Days", viewModel.dateFormatter.string(from: stat.date)),
+            BarMark(x: .value("Days", viewModel.dateFormatter2.string(from: stat.date)),
                     y: .value("Values", viewModel.value(from: stat.stat).value)
             )
-            .foregroundStyle(Color.pink.gradient)
+            .foregroundStyle(color)
             .cornerRadius(2) // 0 for no conerRadius or some value
             .annotation(position: .top, alignment: .center, spacing: 10) {
               Text("\(viewModel.value(from: stat.stat).value)")
@@ -45,7 +46,7 @@ struct ChartView2: View {
 
 struct ChartView2_Previews: PreviewProvider {
   static var previews: some View {
-    ChartView2(stats: [HealthStat(stat: HKQuantity(unit: .count(), doubleValue: .pi), date: Date())], health: Health(id: "stepCount", name: "Step Count", image: "👣"), viewModel: HealthViewModel(health: Health(id: "steps", name: "Steps", image: "👣"), repository: HKRepository()))
+      ChartView(stats: [HealthStat(stat: HKQuantity(unit: .count(), doubleValue: .pi), date: Date())], health: Health(id: "stepCount", name: "Step Count", image: "👣"), color: Color.red, viewModel: HealthViewModel(health: Health(id: "steps", name: "Steps", image: "👣"), repository: HKRepository()))
   }
 }
 
