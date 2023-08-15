@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BedSampleView: View{
-
+    
     @EnvironmentObject var healthSleep: HealthSleep
     @ObservedObject var model = ActivityModel()
     
@@ -31,7 +31,8 @@ struct BedSampleView: View{
                     
                     HStack {
                         Spacer()
-                        if let lastSleep = healthSleep.sleepTime.last {
+                        let nowDate = getCurrentDate()
+                        if let lastSleep = healthSleep.sleepTime.first(where: { $0.date == nowDate }){
                             Text(lastSleep.value)
                                 .font(.largeTitle)
                                 .foregroundColor(.primary)
@@ -39,11 +40,17 @@ struct BedSampleView: View{
                                 .onAppear {
                                     model.sleepTime = lastSleep.value
                                 }
+                        } else {
+                            Text("0時間00分")
+                                .font(.largeTitle)
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 10)
+                                .onAppear {
+                                    model.sleepTime = "0時間00分"
+                                }
                         }
-
+                        
                     }
-                    
-                    
                 }
             }.padding()
             
@@ -57,7 +64,20 @@ struct BedSampleView: View{
                 }
             }.padding()
             Spacer()
+        }.onAppear{
+            healthSleep.getHealthKitData()
         }
+    }
+    func getCurrentDate() -> String {
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        let dateStr = formatter.string(from: date as Date)
+        formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEEEE", options: 0, locale: Locale.current)
+        //let weekStr = formatter.string(from: date as Date)
+        //return  dateStr + " (" + weekStr + ")"
+        return dateStr//00/00を返す
     }
 }
 

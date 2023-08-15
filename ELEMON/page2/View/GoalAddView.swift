@@ -14,6 +14,7 @@ struct GoalAddView: View {
     
     @State private var selectedDate = Date()
     @State private var daysRemaining = 0
+    private var now = Date()
     
     var body: some View {
         GroupBox{
@@ -23,7 +24,7 @@ struct GoalAddView: View {
                 TextField("", text: $viewModel.goalTitle).textFieldStyle(.roundedBorder)
             }
             VStack {
-                DatePicker("日付を選択してください", selection: $selectedDate, displayedComponents: .date)
+                DatePicker("日付を選択してください", selection: $selectedDate, in: now..., displayedComponents: .date)
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .padding()
                 

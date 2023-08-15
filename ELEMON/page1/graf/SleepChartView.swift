@@ -5,16 +5,40 @@
 //  Created by 中島瑠斗 on 2023/07/02.
 //
 
+import Foundation
 import SwiftUI
 import Charts
 
 struct SleepChartView: View {
     var sleepTime: [SleepGraf]
     
+    @ObservedObject var dateModel = dateManager()
+
     
     var body: some View {
         Chart {
-            ForEach(sleepTime) { sleep in
+            //let _ = print(dateModel.dateItem)
+            ForEach(dateModel.dateItem,id: \.self){ items in
+                if let item = sleepTime.first(where: { $0.date == items}) {
+                    let itemValue = item.value
+                    let hourSleep = HourSleep(sleep: itemValue)
+                    // "分"の前の数字を取得
+                    let minuSleep = MinuSleep(sleep: itemValue)
+                    
+                    let totalSleep = hourSleep + minuSleep/60
+                    BarMark(
+                        x: .value("date", items),
+                        y: .value("value", totalSleep)
+                    ).foregroundStyle(Color.blue)
+                } else {
+                    BarMark(
+                        x: .value("date", items),
+                        y: .value("value", 0)
+                    ).foregroundStyle(Color.blue)
+                }
+            }
+
+            /*ForEach(sleepTime) { sleep in
                 let hourSleep = HourSleep(sleep: sleep.value)
                 // "分"の前の数字を取得
                 let minuSleep = MinuSleep(sleep: sleep.value)
@@ -33,7 +57,7 @@ struct SleepChartView: View {
                 //                    }
                 
                 
-            }
+            }*/
         }
         .chartYScale(domain: .automatic(includesZero: false))
         //.chartYScale(domain: yAxisScale(health))

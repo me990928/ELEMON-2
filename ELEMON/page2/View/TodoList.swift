@@ -14,43 +14,36 @@ struct TodoList: View {
     var body: some View {
         NavigationView {
             VStack{
-
+                
                 List {
-                    ForEach(viewModel.todos) { todo in
+                    ForEach(viewModel.todos.filter({ !$0.check && !$0.hid })) { todo in
                         HStack {
-                            Image(systemName: "circlebadge.fill")
-                                .resizable()
+                            Image(systemName:todo.check ? "checkmark.square":"square" ).foregroundColor(todo.check ? Color.red: Color.green)
                                 .scaledToFit()
                                 .frame(width: 15, height: 15)
-                                .foregroundColor(.blue)
+                                .onTapGesture {
+                                    withAnimation(.linear){
+                                        viewModel.updateItemModel(todo: todo)
+                                    }
+                                }
                             VStack {
                                 Text(todo.title)
                                     .font(.title3)
                                 Text(todo.desc)
                                     .font(.caption2)
                             }
-                            //ここで完了と切り替え
+                            Spacer()
+                            Text("削除")
+                                .onTapGesture {
+                                    withAnimation(.linear){
+                                        viewModel.changeItemModel(todo: todo)
+                                    }
+                                    
+                                }
+                            
                         }
-                        .swipeActions(edge: .trailing) {
-                            Button {
-                                viewModel.deleteTodo(todo: todo)
-                            } label: {
-                                Image(systemName: "trash")
-                            }
-                            .tint(.red)
-                        }
-                        .swipeActions(edge: .leading) {
-                            Button {
-                                viewModel.updatingTodo = todo
-                                viewModel.title = todo.title
-                                viewModel.desc = todo.desc
-                                viewModel.isShowAddView.toggle()
-                            } label: {
-                                Image(systemName: "pencil.circle")
-                            }
-                            .tint(.green)
-                        }
-                    }
+                    }//
+                    
                 }
                 .listStyle(PlainListStyle())
                 .scrollContentBackground(.hidden)
@@ -58,11 +51,6 @@ struct TodoList: View {
         }
     }
     
-    
-    //Image(systemName: items[index].isChecked ? "checkmark.square" : "square")
-    //    .onTapGesture {
-    //        items[index].isChecked.toggle()
-    //    }
     
     struct TodoList_Previews: PreviewProvider {
         static var previews: some View {

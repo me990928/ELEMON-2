@@ -20,7 +20,9 @@ struct GoalPage: View {
                         Spacer()
                         Button("編集"){
                             self.sheetGoal.toggle()
-                        }.font(.title3)                 .padding(.trailing, 20.0)  .foregroundColor(Color(.label))
+                        }.font(.title3)
+                            .padding(.trailing, 20.0)
+                            .foregroundColor(Color(.label))
                             .sheet(isPresented: $sheetGoal) {
                                 GoalAddView()
                             }
