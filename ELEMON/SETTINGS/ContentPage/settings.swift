@@ -19,22 +19,43 @@ struct settings: View {
     @State var alertgdelFlag:Bool = false
     @State var alertbyeFlag:Bool = false
     
+    @State var accountSheet: Bool = false
+    
     @EnvironmentObject var au: FireAuthModel
     @EnvironmentObject var fireSt: FirestoreModel
+    
+    var account: some View {
+        HStack{
+            Image(systemName: "person")
+            Text("アカウント")
+                .padding(.leading, 10)
+            Spacer()
+        }
+    }
     
     var body: some View {
         
         VStack{
             NavigationView {
                 List {
-                    NavigationLink(destination: account().navigationTitle("アカウント") ){
-                        HStack{
-                            Image(systemName: "person")
-                            Text("アカウント")
-                                .padding(.leading, 10)
-                            Spacer()
-                        }
+//                    NavigationLink(destination: account().navigationTitle("アカウント") ){
+//                        HStack{
+//                            Image(systemName: "person")
+//                            Text("アカウント")
+//                                .padding(.leading, 10)
+//                            Spacer()
+//                        }
+//                    }
+                    
+                    Button {
+                        self.accountSheet.toggle()
+                    } label: {
+                        account.foregroundColor(Color(.label))
                     }
+                    .sheet(isPresented: $accountSheet) {
+                        AccountPage()
+                    }
+
                     NavigationLink(destination: SwiftUIView().navigationTitle("テーマ設定") ){
                         HStack{
                             Image(systemName: "paintpalette")
