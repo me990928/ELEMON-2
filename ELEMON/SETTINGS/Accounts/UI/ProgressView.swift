@@ -12,7 +12,7 @@ struct ProgressViews: View {
     var body: some View {
         VStack{
             ZStack{
-                Spacer().frame(maxWidth: .infinity, maxHeight: .infinity).background(.ultraThinMaterial)
+                Spacer().frame(maxWidth: .infinity, maxHeight: .infinity).background(.ultraThinMaterial).cornerRadius(20)
                 ProgressView(self.text)
             }
         }

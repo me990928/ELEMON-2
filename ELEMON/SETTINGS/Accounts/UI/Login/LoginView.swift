@@ -16,6 +16,8 @@ struct LoginView: View {
     
     @EnvironmentObject var css: ColorThema
     
+    @Binding var isLoading: Bool
+    
     var gesture: some Gesture {
         DragGesture()
             .onChanged { val in
@@ -26,44 +28,46 @@ struct LoginView: View {
     }
     
     var body: some View {
-        GeometryReader { item in
-            VStack{
-                
-                Spacer().frame(height: item.size.height / 15)
-                
-                
-                Image("icon").resizable().scaledToFit().frame(width: 100,height: 100).cornerRadius(100).overlay(content: {
-                    RoundedRectangle(cornerRadius: 100).stroke(Color.gray, lineWidth: 2)
-                }).aspectRatio(contentMode: .fit)
-                
-                Spacer().frame(height: item.size.height / 10)
-                
-                HStack {
-                    Text("メールアドレス").foregroundColor(Color.gray)
-                    Spacer()
-                }
-                TextField("MailAddress", text: $mail).textFieldStyle(.roundedBorder).padding(.bottom, 10).focused($focus)
-                HStack {
-                    Text("パスワード").foregroundColor(Color.gray)
-                    Spacer()
-                }
-                TextField("Password", text: $pass).textFieldStyle(.roundedBorder).focused($focus)
-                Button {
+        ZStack {
+            GeometryReader { item in
+                VStack{
                     
-                } label: {
-                    Text("LOGIN").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
-                }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
-                
-                
-                Spacer()
+                    Spacer().frame(height: item.size.height / 15)
+                    
+                    
+                    Image("icon").resizable().scaledToFit().frame(width: 100,height: 100).cornerRadius(100).overlay(content: {
+                        RoundedRectangle(cornerRadius: 100).stroke(Color.gray, lineWidth: 2)
+                    }).aspectRatio(contentMode: .fit)
+                    
+                    Spacer().frame(height: item.size.height / 10)
+                    
+                    HStack {
+                        Text("メールアドレス").foregroundColor(Color.gray)
+                        Spacer()
+                    }
+                    TextField("MailAddress", text: $mail).textFieldStyle(.roundedBorder).padding(.bottom, 10).focused($focus)
+                    HStack {
+                        Text("パスワード").foregroundColor(Color.gray)
+                        Spacer()
+                    }
+                    TextField("Password", text: $pass).textFieldStyle(.roundedBorder).focused($focus)
+                    Button {
+                        self.isLoading.toggle()
+                    } label: {
+                        Text("LOGIN").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
+                    }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
+                    
+                    
+                    Spacer()
 
-            }.padding()
-        }.gesture(self.gesture)
+                }.padding()
+            }.gesture(self.gesture)
+        }
     }
 }
 
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView().environmentObject(ColorThema())
-    }
-}
+//struct Login_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView(isLoading: false).environmentObject(ColorThema())
+//    }
+//}
