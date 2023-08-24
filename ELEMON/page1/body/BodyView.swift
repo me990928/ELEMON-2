@@ -1,12 +1,6 @@
-//
-//  ContentView.swift
-//  bodyPage
-//
-//  Created by 中島瑠斗 on 2023/05/16.
-//
-
 import SwiftUI
 import UIKit
+import Charts
 
 struct BodyView: View {
     
@@ -16,8 +10,8 @@ struct BodyView: View {
     }
     
     let namedFonts:[String] = [
-        "体温",
-        "体脂肪体重",
+        "体重",
+        "BMI",
         "体脂肪率",
         "手首皮膚温度"
     ]
@@ -25,17 +19,20 @@ struct BodyView: View {
     @State var sheet:Bool = false
     @State var flag1:Bool = false
     
-    @ObservedObject var model = ActivityModel()
-    
-    @EnvironmentObject var healthSleep: HealthSleep
-//    @State var status: HKAuthorizationStatus = .notDetermined
-    @AppStorage("weight") var weight = 50.0
-    @AppStorage("height") var height = 160.0
-    @State var isShowingAlert = false
-    @State var alertTitle = ""
-    
     @State var taiz:String = ""
     
+    @AppStorage ("weight") var taizyu: String = "0"
+    @AppStorage ("height") var height: String = "0"
+    
+    @AppStorage ("bodyCount") var c: Int = 0
+    
+    var Cm = ChartModel()
+    
+    @State var tx:String = ""
+    
+    //  グラフデータ
+    @State var charta = [BodyCharts]()
+    @State var bmich = [BodyCharts]()
     
     
     var body: some View {
@@ -55,15 +52,23 @@ struct BodyView: View {
                                     Text("体重")
                                     Spacer()
                                 }
-                                //TextField("", text: $weight)
+                                TextField("", text: $taizyu)
                                 HStack {
                                     Text("身長")
                                     Spacer()
                                 }
-                                //TextField("身長", text: $height)
+                                TextField("身長", text: $height)
                                     .keyboardType(.numberPad)
                                 
                                 Button("追加"){
+                                    print(self.taizyu)
+                                    self.flag1 = false
+                                    self.Cm.saveBMI(bmi: Double(self.bmi(wei: Float(taizyu) ?? 1.0, hei: Float(height) ?? 1.0)) ?? 0)
+                                    self.Cm.saveWeight(wei: Double(Float(self.taizyu) ?? 0) )
+                                    self.Cm.viewWei()
+                                    self.Cm.viewBMI()
+                                    self.charta = self.Cm.weightGRF
+                                    self.bmich = self.Cm.BMIGRF
                                     
                                 }
                             }.padding().textFieldStyle(.roundedBorder).foregroundColor(Color(.label))
@@ -78,7 +83,7 @@ struct BodyView: View {
                         }
                         HStack {
                             Spacer()
-                            Text(String(weight)+"kg").font(.largeTitle).foregroundColor(.primary)
+                            Text(String(taizyu)+"kg").font(.largeTitle).foregroundColor(.primary)
                         }
                     }
                 }.padding(.horizontal)
@@ -90,7 +95,7 @@ struct BodyView: View {
                         }
                         HStack {
                             Spacer()
-                            Text(String(height)+"cm").font(.largeTitle).foregroundColor(.primary)
+                            Text(height+"cm").font(.largeTitle).foregroundColor(.primary)
                         }
                     }
                 }.padding(.horizontal)
@@ -102,7 +107,7 @@ struct BodyView: View {
                         }
                         HStack {
                             Spacer()
-                            Text(self.bmi(wei: Float(weight) , hei: Float(height) )).font(.largeTitle).foregroundColor(Color(.label))
+                            Text(self.bmi(wei: Float(taizyu) ?? 1.0, hei: Float(height) ?? 1.0)).font(.largeTitle).foregroundColor(Color(.label))
                         }
                         
                     }
@@ -157,22 +162,33 @@ struct BodyView: View {
 //                    }//nacigationLink
 //                    .listRowBackground(Color(UIColor.systemGray5))
                     
-                    ForEach(namedFonts,id: \.self) { namedFont in
-                        Button(namedFont){
-                            self.sheet.toggle()
-                        }.listRowBackground(Color(UIColor.systemGray5))
-                            .sheet(isPresented: $sheet) {
-                                
-                                GroupBox {
-                                    VStack{
-                                        HStack {
-                                            Text("今週の\(namedFont)").font(.title2).foregroundColor(.primary)
-                                            Spacer()
-                                        }
-                                        MindFullNess().frame(height: 180).padding()
-                                    }.presentationDetents([.medium])
-                                }.padding()
+                    GroupBox{
+                        Text("今週の体重").font(.title2).padding(.bottom,10)
+                        
+                        VStack{
+                            
+                            
+                            // グラフビュー
+                            Chart(charta){ point in
+                                BarMark(
+                                    x: .value("title", point.title),
+                                    y: .value("name", point.value)
+                                ).foregroundStyle(.pink)
                             }
+                        }
+                    }
+                    GroupBox{
+                        VStack{
+                            Text("今週のBMI").font(.title2).padding(.bottom,10)
+                            
+                            // グラフビュー
+                            Chart(bmich){ point in
+                                BarMark(
+                                    x: .value("title", point.title),
+                                    y: .value("name", point.value)
+                                ).foregroundStyle(.pink)
+                            }
+                        }
                     }
                 }//list
                 
@@ -182,6 +198,18 @@ struct BodyView: View {
                 
                 
             }//navigationView
+            .onAppear(){
+                if self.c < 1 {
+                    self.Cm.initData()
+                    self.c = 1
+                    print("first")
+                }
+                self.Cm.viewWei()
+                self.Cm.viewBMI()
+                self.charta = self.Cm.weightGRF
+                self.bmich = self.Cm.BMIGRF
+                print("a:\(self.charta)")
+            }
         }
     }
     
