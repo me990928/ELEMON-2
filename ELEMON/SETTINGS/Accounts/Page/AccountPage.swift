@@ -28,6 +28,8 @@ struct AccountPage: View {
     
     @State private var viewOffX: CGFloat = 0
     
+    @State var isDisable: Bool = true
+    
     @EnvironmentObject var css: ColorThema
     
     var body: some View {
@@ -100,12 +102,18 @@ struct AccountPage: View {
                         .offset(x: viewOffX).animation(.default, value: viewOffX)
                 }
                 
+                Button("あとで消すシートダウン"){
+                    isDisable.toggle()
+                }
+                
             }.onAppear(){
                 tabSize = bodyGeo.size.width / 2
             }
-        }
+        }.interactiveDismissDisabled(isDisable)
     }
 }
+
+
 
 struct AccountPage_Previews: PreviewProvider {
     static var previews: some View {
