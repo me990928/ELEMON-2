@@ -113,7 +113,7 @@ struct BodyView: View {
                     }
                 }.padding(.horizontal)
                 Spacer()
-                List{
+//                List{
 //
 //                    NavigationLink(destination: bodyTemperatureView()){
 //                        HStack{
@@ -176,7 +176,7 @@ struct BodyView: View {
                                 ).foregroundStyle(.pink)
                             }
                         }
-                    }
+                    }.padding(.horizontal)
                     GroupBox{
                         VStack{
                             Text("今週のBMI").font(.title2).padding(.bottom,10)
@@ -189,12 +189,12 @@ struct BodyView: View {
                                 ).foregroundStyle(.pink)
                             }
                         }
-                    }
-                }//list
+                    }.padding(.horizontal)
+//                }//list
                 
-                .scrollContentBackground(.hidden)
+//                .scrollContentBackground(.hidden)
 //                .background(Color.white)
-                .foregroundColor(Color(.label))
+//                .foregroundColor(Color(.label))
                 
                 
             }//navigationView
