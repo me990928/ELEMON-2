@@ -108,9 +108,6 @@ struct AccountPage: View {
                             .offset(x: viewOffX).animation(.default, value: viewOffX)
                     }
                     
-                    Button("あとで消すシートダウン"){
-                        isDisable.toggle()
-                    }
                     
                 }.onAppear(){
                     tabSize = bodyGeo.size.width / 2
