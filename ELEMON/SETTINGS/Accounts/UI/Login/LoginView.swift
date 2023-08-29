@@ -17,9 +17,11 @@ struct LoginView: View {
     
     @EnvironmentObject var css: ColorThema
     @ObservedObject var accountVM = AccountViewModel()
+    @EnvironmentObject var viewNum: ViewState
     
     
     @Binding var isLoading: Bool
+    @Binding var accountSheet: Bool
     
     // ログインミスチェック
     @State var isMiss: Bool = false
@@ -81,11 +83,15 @@ struct LoginView: View {
                         self.isLoading.toggle()
                         accountVM.loginUser(mail: mail, pass: pass) { res in
                             if res {
+                                // ログイン失敗
                                 isMiss = true
                                 self.isLoading.toggle()
                             }else{
                                 isMiss = false
                                 self.isLoading.toggle()
+                                self.accountSheet = false
+                                // コミュページへ
+                                viewNum.selectedTabNum = 2
                             }
                         }
                     }

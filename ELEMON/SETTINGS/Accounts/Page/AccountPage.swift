@@ -34,6 +34,8 @@ struct AccountPage: View {
     
     @EnvironmentObject var css: ColorThema
     
+    @Binding var accountSheet: Bool
+    
     var body: some View {
         
         ZStack {
@@ -100,7 +102,7 @@ struct AccountPage: View {
                     
                     GeometryReader { GeometryProxy in
                         HStack {
-                            LoginView(isLoading: $isLogin).frame(width: GeometryProxy.size.width).padding(.top).ignoresSafeArea(.all)
+                            LoginView(isLoading: $isLogin, accountSheet: $accountSheet).frame(width: GeometryProxy.size.width).padding(.top).ignoresSafeArea(.all)
                             RegistView(isResist: $isResist).frame(width: GeometryProxy.size.width).ignoresSafeArea(.all)
                         }.frame(width: GeometryProxy.size.width * 2)
                             .offset(x: viewOffX).animation(.default, value: viewOffX)
@@ -130,8 +132,8 @@ struct AccountPage: View {
 
 
 
-struct AccountPage_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountPage().environmentObject(ColorThema())
-    }
-}
+//struct AccountPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountPage(accountSheet: true).environmentObject(ColorThema())
+//    }
+//}

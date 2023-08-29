@@ -17,7 +17,7 @@ struct ELEMONApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabChangeUI().environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel()).environmentObject(ColorThema())
+            TabChangeUI().environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel()).environmentObject(ColorThema()).environmentObject(ViewState())
         }
     }
 }
