@@ -28,87 +28,109 @@ struct AccountPage: View {
     
     @State private var viewOffX: CGFloat = 0
     
+    @State var isDisable: Bool = true
+    @State var isLogin: Bool = false
+    @State var isResist: Bool = false
+    
     @EnvironmentObject var css: ColorThema
     
+    @Binding var accountSheet: Bool
+    
     var body: some View {
-        GeometryReader { bodyGeo in
-            
-            VStack(spacing: 0) {
-                HStack(spacing: 0){
-                    GeometryReader { Item1 in
-                        Button {
-                            selected = .Login
-                            tabSize = bodyGeo.size.width / 2
-                            viewOffX = 0
-//                            withAnimation (
-//                                .interactiveSpring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)
-//                            ){
-//                                tabMidX = Item1.frame(in: .global).midX
-//                            }
-                            tabMidX = Item1.frame(in: .global).midX
-                        } label: {
-                            Text(TabItems.Login.rawValue.uppercased()).fontWeight(.heavy).foregroundColor(.white)
-                        }
-                        .frame(width: Item1.size.width, height: Item1.size.height)
-                        .onAppear{
-                            if selected == TabItems.allCases.first {
+        
+        ZStack {
+            GeometryReader { bodyGeo in
+                
+                VStack(spacing: 0) {
+                    HStack(spacing: 0){
+                        GeometryReader { Item1 in
+                            Button {
+                                selected = .Login
+                                tabSize = bodyGeo.size.width / 2
+                                viewOffX = 0
+    //                            withAnimation (
+    //                                .interactiveSpring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)
+    //                            ){
+    //                                tabMidX = Item1.frame(in: .global).midX
+    //                            }
                                 tabMidX = Item1.frame(in: .global).midX
-//                                tabSize = bodyGeo.size.width / 2
+                            } label: {
+                                Text(TabItems.Login.rawValue.uppercased()).fontWeight(.heavy).foregroundColor(.white)
                             }
-                            
-                        }
-                    }.frame(width: bodyGeo.size.width / 2, height: 100)
-                
-                
-                
-                    GeometryReader { Item2 in
-                        Button {
-                            selected = .Login
-                            viewOffX = -bodyGeo.size.width
-                            tabSize = bodyGeo.size.width / 2
-//                            withAnimation (
-//                                .interactiveSpring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)
-//                            ){
-//                                tabMidX = Item2.frame(in: .global).midX
-//                            }
-                            tabMidX = Item2.frame(in: .global).midX
-                        } label: {
-                            Text(TabItems.Regist.rawValue.uppercased()).fontWeight(.heavy).foregroundColor(.white)
-                        }
-                        .frame(width: Item2.size.width, height: Item2.size.height)
-                        .onAppear{
-                            if selected == TabItems.allCases.first {
+                            .frame(width: Item1.size.width, height: Item1.size.height)
+                            .onAppear{
+                                if selected == TabItems.allCases.first {
+                                    tabMidX = Item1.frame(in: .global).midX
+    //                                tabSize = bodyGeo.size.width / 2
+                                }
+                                
+                            }
+                        }.frame(width: bodyGeo.size.width / 2, height: 100)
+                    
+                    
+                    
+                        GeometryReader { Item2 in
+                            Button {
+                                selected = .Login
+                                viewOffX = -bodyGeo.size.width
+                                tabSize = bodyGeo.size.width / 2
+    //                            withAnimation (
+    //                                .interactiveSpring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)
+    //                            ){
+    //                                tabMidX = Item2.frame(in: .global).midX
+    //                            }
                                 tabMidX = Item2.frame(in: .global).midX
+                            } label: {
+                                Text(TabItems.Regist.rawValue.uppercased()).fontWeight(.heavy).foregroundColor(.white)
                             }
-                        }
-                    }.frame(width: bodyGeo.size.width / 2, height: 100)
-                    
-                    
-                    
-                }.frame(height: 70).background(Color(self.css.accent)).ignoresSafeArea(edges: .bottom)
-                .zIndex(1)
-            
-                HStack(spacing: 0){
-                    Spacer().frame(width: tabSize,height: 10).background(.orange).position(x: tabMidX).animation(.linear, value: tabMidX)
-                }.frame(height: 0)
+                            .frame(width: Item2.size.width, height: Item2.size.height)
+                            .onAppear{
+                                if selected == TabItems.allCases.first {
+                                    tabMidX = Item2.frame(in: .global).midX
+                                }
+                            }
+                        }.frame(width: bodyGeo.size.width / 2, height: 100)
+                        
+                        
+                        
+                    }.frame(height: 70).background(Color(self.css.accent)).ignoresSafeArea(edges: .bottom)
+                    .zIndex(1)
                 
-                GeometryReader { GeometryProxy in
-                    HStack {
-                        LoginView().frame(width: GeometryProxy.size.width).padding(.top).ignoresSafeArea(.all)
-                        RegistView().frame(width: GeometryProxy.size.width).ignoresSafeArea(.all)
-                    }.frame(width: GeometryProxy.size.width * 2)
-                        .offset(x: viewOffX).animation(.default, value: viewOffX)
+                    HStack(spacing: 0){
+                        Spacer().frame(width: tabSize,height: 10).background(.orange).position(x: tabMidX).animation(.linear, value: tabMidX)
+                    }.frame(height: 0)
+                    
+                    GeometryReader { GeometryProxy in
+                        HStack {
+                            LoginView(isLoading: $isLogin, accountSheet: $accountSheet).frame(width: GeometryProxy.size.width).padding(.top).ignoresSafeArea(.all)
+                            RegistView(isResist: $isResist).frame(width: GeometryProxy.size.width).ignoresSafeArea(.all)
+                        }.frame(width: GeometryProxy.size.width * 2)
+                            .offset(x: viewOffX).animation(.default, value: viewOffX)
+                    }
+                    
+                    
+                }.onAppear(){
+                    tabSize = bodyGeo.size.width / 2
                 }
-                
-            }.onAppear(){
-                tabSize = bodyGeo.size.width / 2
+            }.interactiveDismissDisabled(isDisable)
+            
+            if isResist {
+                ProgressViews(text: "作成中...").padding()
             }
+            
+            if isLogin {
+                ProgressViews(text: "ログイン中...").padding()
+            }
+            
         }
+        
     }
 }
 
-struct AccountPage_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountPage().environmentObject(ColorThema())
-    }
-}
+
+
+//struct AccountPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountPage(accountSheet: true).environmentObject(ColorThema())
+//    }
+//}

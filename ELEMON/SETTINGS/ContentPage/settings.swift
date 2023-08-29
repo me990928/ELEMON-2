@@ -53,7 +53,7 @@ struct settings: View {
                         account.foregroundColor(Color(.label))
                     }
                     .sheet(isPresented: $accountSheet) {
-                        AccountPage()
+                        AccountPage(accountSheet: $accountSheet)
                     }
 
                     NavigationLink(destination: SwiftUIView().navigationTitle("テーマ設定") ){

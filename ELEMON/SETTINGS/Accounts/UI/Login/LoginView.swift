@@ -11,10 +11,21 @@ import SwiftUI
 struct LoginView: View {
     @State var mail: String = ""
     @State var pass: String = ""
+    @State var push: Int = 0
     
     @FocusState var focus: Bool
     
     @EnvironmentObject var css: ColorThema
+    @ObservedObject var accountVM = AccountViewModel()
+    @EnvironmentObject var viewNum: ViewState
+    
+    
+    @Binding var isLoading: Bool
+    @Binding var accountSheet: Bool
+    
+    // ログインミスチェック
+    @State var isMiss: Bool = false
+    
     
     var gesture: some Gesture {
         DragGesture()
@@ -26,44 +37,71 @@ struct LoginView: View {
     }
     
     var body: some View {
-        GeometryReader { item in
-            VStack{
-                
-                Spacer().frame(height: item.size.height / 15)
-                
-                
-                Image("icon").resizable().scaledToFit().frame(width: 100,height: 100).cornerRadius(100).overlay(content: {
-                    RoundedRectangle(cornerRadius: 100).stroke(Color.gray, lineWidth: 2)
-                }).aspectRatio(contentMode: .fit)
-                
-                Spacer().frame(height: item.size.height / 10)
-                
-                HStack {
-                    Text("メールアドレス").foregroundColor(Color.gray)
-                    Spacer()
-                }
-                TextField("MailAddress", text: $mail).textFieldStyle(.roundedBorder).padding(.bottom, 10).focused($focus)
-                HStack {
-                    Text("パスワード").foregroundColor(Color.gray)
-                    Spacer()
-                }
-                TextField("Password", text: $pass).textFieldStyle(.roundedBorder).focused($focus)
-                Button {
+        ZStack {
+            GeometryReader { item in
+                VStack{
                     
-                } label: {
-                    Text("LOGIN").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
-                }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
-                
-                
-                Spacer()
+                    Spacer().frame(height: item.size.height / 15)
+                    
+                    
+                    Image("icon").resizable().scaledToFit().frame(width: 100,height: 100).cornerRadius(100).overlay(content: {
+                        RoundedRectangle(cornerRadius: 100).stroke(Color.gray, lineWidth: 2)
+                    }).aspectRatio(contentMode: .fit)
+                    
+                    Spacer().frame(height: item.size.height / 10)
+                    
+                    HStack {
+                        Text("メールアドレス").foregroundColor(Color.gray)
+                        Spacer()
+                    }
+                    TextField("MailAddress", text: $mail).textFieldStyle(.roundedBorder).padding(.bottom, 10).focused($focus)
+                    HStack {
+                        Text("パスワード").foregroundColor(Color.gray)
+                        Spacer()
+                    }
+                    TextField("Password", text: $pass).textFieldStyle(.roundedBorder).focused($focus)
+                    
+                    if isMiss {
+                        HStack {
+                            Text("ログイン失敗").foregroundColor(.red)
+                            Spacer()
+                        }.padding(.top)
+                    }
+                    
+                    Button {
+//                        self.isLoading.toggle()
+                        self.push += 1
+                    } label: {
+                        Text("LOGIN").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
+                    }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
+                    
+                    
+                    Spacer()
 
-            }.padding()
-        }.gesture(self.gesture)
+                }.padding()
+                    .onChange(of: push) { newValue in
+                        self.isLoading.toggle()
+                        accountVM.loginUser(mail: mail, pass: pass) { res in
+                            if res {
+                                // ログイン失敗
+                                isMiss = true
+                                self.isLoading.toggle()
+                            }else{
+                                isMiss = false
+                                self.isLoading.toggle()
+                                self.accountSheet = false
+                                // コミュページへ
+                                viewNum.selectedTabNum = 2
+                            }
+                        }
+                    }
+            }.gesture(self.gesture)
+        }
     }
 }
 
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView().environmentObject(ColorThema())
-    }
-}
+//struct Login_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView(isLoading: false).environmentObject(ColorThema())
+//    }
+//}

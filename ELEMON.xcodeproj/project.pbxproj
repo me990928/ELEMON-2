@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25A20DF22A9D34CD0050937D /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DF12A9D34CD0050937D /* AccountViewModel.swift */; };
+		25A766492A8B6E64000EEDA4 /* dateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766482A8B6E64000EEDA4 /* dateManager.swift */; };
+		25A7664F2A8B71F2000EEDA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */; };
+		25A766512A8B7241000EEDA4 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766502A8B7240000EEDA4 /* headerView.swift */; };
+		25A766532A8B7377000EEDA4 /* progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766522A8B7377000EEDA4 /* progress.swift */; };
 		25AE71D02A67C963006AD196 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 25AE71CF2A67C963006AD196 /* Realm */; };
 		25AE71D22A67C963006AD196 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 25AE71D12A67C963006AD196 /* RealmSwift */; };
 		25AE72672A67CA28006AD196 /* SerchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71D62A67CA27006AD196 /* SerchResult.swift */; };
@@ -117,11 +122,21 @@
 		25AE72DE2A67CDB2006AD196 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 25AE72DD2A67CDB2006AD196 /* FirebaseFirestoreSwift */; };
 		25AE72E02A67CEC2006AD196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72DF2A67CEC2006AD196 /* ContentView.swift */; };
 		25B239FA2A67BFCE008AA303 /* ELEMONApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B239F92A67BFCE008AA303 /* ELEMONApp.swift */; };
-		2B9A548A2A68F51100502015 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A54892A68F51100502015 /* GoogleService-Info.plist */; };
+		25B409C62A97CD0100C84B1A /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B409C52A97CD0100C84B1A /* ChartModel.swift */; };
+		25B409CF2A97F6FE00C84B1A /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B409CC2A97F6FE00C84B1A /* RegistView.swift */; };
+		25B409D02A97F6FE00C84B1A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B409CE2A97F6FE00C84B1A /* LoginView.swift */; };
+		25B409D32A97F74900C84B1A /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B409D22A97F74900C84B1A /* AccountPage.swift */; };
+		25B409D72A98043700C84B1A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B409D62A98043700C84B1A /* ProgressView.swift */; };
 		2B9A548C2A68FAAA00502015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A548B2A68FAAA00502015 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25A20DF12A9D34CD0050937D /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		25A766482A8B6E64000EEDA4 /* dateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateManager.swift; sourceTree = "<group>"; };
+		25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		25A766502A8B7240000EEDA4 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
+		25A766522A8B7377000EEDA4 /* progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = progress.swift; sourceTree = "<group>"; };
+		25A766542A8B7429000EEDA4 /* ELEMON.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ELEMON.entitlements; sourceTree = "<group>"; };
 		25AE71D62A67CA27006AD196 /* SerchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerchResult.swift; sourceTree = "<group>"; };
 		25AE71D82A67CA27006AD196 /* ComuTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComuTopView.swift; sourceTree = "<group>"; };
 		25AE71DA2A67CA27006AD196 /* GroupTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTopView.swift; sourceTree = "<group>"; };
@@ -228,7 +243,11 @@
 		25AE72DF2A67CEC2006AD196 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		25B239F62A67BFCE008AA303 /* ELEMON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELEMON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B239F92A67BFCE008AA303 /* ELEMONApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ELEMONApp.swift; sourceTree = "<group>"; };
-		2B9A54892A68F51100502015 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		25B409C52A97CD0100C84B1A /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
+		25B409CC2A97F6FE00C84B1A /* RegistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
+		25B409CE2A97F6FE00C84B1A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		25B409D22A97F74900C84B1A /* AccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPage.swift; sourceTree = "<group>"; };
+		25B409D62A98043700C84B1A /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2B9A548B2A68FAAA00502015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "ELEMON/Preview Content/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -338,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				25AE71E92A67CA28006AD196 /* HeartViewModel.swift */,
+				25A766482A8B6E64000EEDA4 /* dateManager.swift */,
 				25AE71EA2A67CA28006AD196 /* ActivityMoel.swift */,
 				25AE71EB2A67CA28006AD196 /* HealthViewModel.swift */,
 			);
@@ -372,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				25AE71F92A67CA28006AD196 /* BodyView.swift */,
+				25B409C52A97CD0100C84B1A /* ChartModel.swift */,
 				25AE71FA2A67CA28006AD196 /* bodyFatPercentageView.swift */,
 				25AE71FB2A67CA28006AD196 /* bodyTemperatureView.swift */,
 				25AE71FC2A67CA28006AD196 /* leanBodyMassView.swift */,
@@ -473,6 +494,7 @@
 		25AE72262A67CA28006AD196 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				25A766522A8B7377000EEDA4 /* progress.swift */,
 				25AE72272A67CA28006AD196 /* Todo.swift */,
 			);
 			path = Model;
@@ -487,6 +509,7 @@
 				25AE722C2A67CA28006AD196 /* GoalCount.swift */,
 				25AE722D2A67CA28006AD196 /* ProgressBar.swift */,
 				25AE722E2A67CA28006AD196 /* TodoEdit.swift */,
+				25A766502A8B7240000EEDA4 /* headerView.swift */,
 				25AE722F2A67CA28006AD196 /* ProgressAddView.swift */,
 				25AE72302A67CA28006AD196 /* TodoList.swift */,
 				25AE72312A67CA28006AD196 /* GoalAddView.swift */,
@@ -515,6 +538,7 @@
 		25AE72392A67CA28006AD196 /* SETTINGS */ = {
 			isa = PBXGroup;
 			children = (
+				25B409C92A97F6DC00C84B1A /* Accounts */,
 				25AE723A2A67CA28006AD196 /* ContentPage */,
 				25AE72442A67CA28006AD196 /* page4.swift */,
 			);
@@ -625,7 +649,8 @@
 		25B239F82A67BFCE008AA303 /* ELEMON */ = {
 			isa = PBXGroup;
 			children = (
-				2B9A54892A68F51100502015 /* GoogleService-Info.plist */,
+				25A766542A8B7429000EEDA4 /* ELEMON.entitlements */,
+				25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */,
 				25AE72662A67CA28006AD196 /* ColorThema.swift */,
 				25AE72DF2A67CEC2006AD196 /* ContentView.swift */,
 				25B239F92A67BFCE008AA303 /* ELEMONApp.swift */,
@@ -648,6 +673,50 @@
 				2B9A548B2A68FAAA00502015 /* Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		25B409C92A97F6DC00C84B1A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				25B409D12A97F73600C84B1A /* Page */,
+				25B409CA2A97F6FE00C84B1A /* UI */,
+				25A20DF12A9D34CD0050937D /* AccountViewModel.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		25B409CA2A97F6FE00C84B1A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				25B409CB2A97F6FE00C84B1A /* Regist */,
+				25B409CD2A97F6FE00C84B1A /* Login */,
+				25B409D62A98043700C84B1A /* ProgressView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		25B409CB2A97F6FE00C84B1A /* Regist */ = {
+			isa = PBXGroup;
+			children = (
+				25B409CC2A97F6FE00C84B1A /* RegistView.swift */,
+			);
+			path = Regist;
+			sourceTree = "<group>";
+		};
+		25B409CD2A97F6FE00C84B1A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				25B409CE2A97F6FE00C84B1A /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		25B409D12A97F73600C84B1A /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				25B409D22A97F74900C84B1A /* AccountPage.swift */,
+			);
+			path = Page;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,9 +788,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B9A548A2A68F51100502015 /* GoogleService-Info.plist in Resources */,
 				25AE72CE2A67CA28006AD196 /* char 2.png in Resources */,
 				25AE72CD2A67CA28006AD196 /* elemonchar.jpeg in Resources */,
+				25A7664F2A8B71F2000EEDA4 /* GoogleService-Info.plist in Resources */,
 				25AE72CA2A67CA28006AD196 /* Assets.xcassets in Resources */,
 				2B9A548C2A68FAAA00502015 /* Assets.xcassets in Resources */,
 			);
@@ -744,7 +813,9 @@
 				25AE72712A67CA28006AD196 /* ComuView.swift in Sources */,
 				25AE72AC2A67CA28006AD196 /* ProgressAddView.swift in Sources */,
 				25AE72E02A67CEC2006AD196 /* ContentView.swift in Sources */,
+				25B409C62A97CD0100C84B1A /* ChartModel.swift in Sources */,
 				25AE72C82A67CA28006AD196 /* StatusSheet.swift in Sources */,
+				25A766532A8B7377000EEDA4 /* progress.swift in Sources */,
 				25AE72CB2A67CA28006AD196 /* MsgView.swift in Sources */,
 				25AE72B62A67CA28006AD196 /* CustomerCentor.swift in Sources */,
 				25AE72A32A67CA28006AD196 /* ProgressViewModel.swift in Sources */,
@@ -760,6 +831,7 @@
 				25AE727C2A67CA28006AD196 /* activitySampleView.swift in Sources */,
 				25AE72BC2A67CA28006AD196 /* InquiryFormView.swift in Sources */,
 				25AE72842A67CA28006AD196 /* wristTemperatureView.swift in Sources */,
+				25B409CF2A97F6FE00C84B1A /* RegistView.swift in Sources */,
 				25AE72A82A67CA28006AD196 /* ProgressGrafView.swift in Sources */,
 				25AE72832A67CA28006AD196 /* leanBodyMassView.swift in Sources */,
 				25AE72B32A67CA28006AD196 /* SelfManagementTestView.swift in Sources */,
@@ -797,6 +869,7 @@
 				25AE72BF2A67CA28006AD196 /* TabChangeUIApp.swift in Sources */,
 				25AE72B92A67CA28006AD196 /* SwiftUIView.swift in Sources */,
 				25AE72922A67CA28006AD196 /* item4.swift in Sources */,
+				25A766512A8B7241000EEDA4 /* headerView.swift in Sources */,
 				25AE72762A67CA28006AD196 /* WaterView.swift in Sources */,
 				25AE726B2A67CA28006AD196 /* GroupSearchView.swift in Sources */,
 				25AE72C32A67CA28006AD196 /* TabUIView.swift in Sources */,
@@ -807,6 +880,7 @@
 				25AE726E2A67CA28006AD196 /* FirestoreModel.swift in Sources */,
 				25AE72782A67CA28006AD196 /* MindFullnessSampleView.swift in Sources */,
 				25AE72C72A67CA28006AD196 /* gameApp.swift in Sources */,
+				25B409D32A97F74900C84B1A /* AccountPage.swift in Sources */,
 				25AE72A12A67CA28006AD196 /* HealthSleep.swift in Sources */,
 				25AE72C52A67CA28006AD196 /* FireAuth.swift in Sources */,
 				25AE729D2A67CA28006AD196 /* MainSelect.swift in Sources */,
@@ -814,7 +888,9 @@
 				25AE727D2A67CA28006AD196 /* WalkDetailVIew.swift in Sources */,
 				25AE728C2A67CA28006AD196 /* SleepChartView.swift in Sources */,
 				25AE727F2A67CA28006AD196 /* MonthAct.swift in Sources */,
+				25A766492A8B6E64000EEDA4 /* dateManager.swift in Sources */,
 				25AE72872A67CA28006AD196 /* GrafView.swift in Sources */,
+				25B409D72A98043700C84B1A /* ProgressView.swift in Sources */,
 				25AE72A62A67CA28006AD196 /* AddView.swift in Sources */,
 				25AE72742A67CA28006AD196 /* ActivityMoel.swift in Sources */,
 				25AE72AB2A67CA28006AD196 /* TodoEdit.swift in Sources */,
@@ -831,7 +907,9 @@
 				25AE72C62A67CA28006AD196 /* CharModel.swift in Sources */,
 				25AE72B82A67CA28006AD196 /* settings.swift in Sources */,
 				25AE72D22A67CA28006AD196 /* CharView.swift in Sources */,
+				25B409D02A97F6FE00C84B1A /* LoginView.swift in Sources */,
 				25AE726C2A67CA28006AD196 /* GroupChatView.swift in Sources */,
+				25A20DF22A9D34CD0050937D /* AccountViewModel.swift in Sources */,
 				25AE727E2A67CA28006AD196 /* hartsSampleView.swift in Sources */,
 				25AE72672A67CA28006AD196 /* SerchResult.swift in Sources */,
 				25AE72962A67CA28006AD196 /* prot.swift in Sources */,
@@ -961,10 +1039,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ELEMON/ELEMON.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ELEMON/Preview Content\"";
-				DEVELOPMENT_TEAM = RV5N7FAFCJ;
+				DEVELOPMENT_TEAM = WFCKBPMR9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "U22 is used healthcardata";
@@ -980,11 +1059,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.elemon.health.ELEMON1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elemon.health.ELEMON12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -993,10 +1075,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ELEMON/ELEMON.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ELEMON/Preview Content\"";
-				DEVELOPMENT_TEAM = RV5N7FAFCJ;
+				DEVELOPMENT_TEAM = WFCKBPMR9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "U22 is used healthcardata";
@@ -1012,11 +1095,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.elemon.health.ELEMON1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elemon.health.ELEMON12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
