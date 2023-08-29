@@ -6,8 +6,41 @@
 //
 
 import Foundation
+import FirebaseAuth
 
-class AccountViewModel {
+class AccountViewModel: ObservableObject {
+    
+    private var au = Auth.auth()
+    
+    @Published var count: Int = 0
+    
+    // ログイン
+    func createUser(mail: String, name: String, pass: String, completion: @escaping (Bool) -> Void) {
+        au.createUser(withEmail: mail, password: pass) { res, err in
+            if err != nil {
+                completion(true) // エラーがある場合はtrueを渡す
+            }
+            
+            if let user = res?.user {
+                let req = user.createProfileChangeRequest()
+                req.displayName = name
+                req.commitChanges { err in
+                    if err == nil {
+                        user.sendEmailVerification { err in
+                            if err == nil {
+                                FirestoreModel().addusr(name: name, mail: mail, pass: pass, group: UUID().uuidString)
+                                completion(false) // 成功した場合はfalseを渡す
+                            } else {
+                                completion(true) // エラーがある場合はtrueを渡す
+                            }
+                        }
+                    } else {
+                        completion(true) // エラーがある場合はtrueを渡す
+                    }
+                }
+            }
+        }
+    }
     
     // メールチェック
     func isValidEmail(email: String) -> Bool {
