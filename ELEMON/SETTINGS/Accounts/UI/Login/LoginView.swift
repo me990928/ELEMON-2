@@ -11,17 +11,18 @@ import SwiftUI
 struct LoginView: View {
     @State var mail: String = ""
     @State var pass: String = ""
-    
-    @State var push: Bool = false
+    @State var push: Int = 0
     
     @FocusState var focus: Bool
     
     @EnvironmentObject var css: ColorThema
+    @ObservedObject var accountVM = AccountViewModel()
+    
     
     @Binding var isLoading: Bool
     
     // ログインミスチェック
-    @State var isMiss: Bool = true
+    @State var isMiss: Bool = false
     
     
     var gesture: some Gesture {
@@ -66,7 +67,8 @@ struct LoginView: View {
                     }
                     
                     Button {
-                        self.isLoading.toggle()
+//                        self.isLoading.toggle()
+                        self.push += 1
                     } label: {
                         Text("LOGIN").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
                     }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
@@ -75,6 +77,18 @@ struct LoginView: View {
                     Spacer()
 
                 }.padding()
+                    .onChange(of: push) { newValue in
+                        self.isLoading.toggle()
+                        accountVM.loginUser(mail: mail, pass: pass) { res in
+                            if res {
+                                isMiss = true
+                                self.isLoading.toggle()
+                            }else{
+                                isMiss = false
+                                self.isLoading.toggle()
+                            }
+                        }
+                    }
             }.gesture(self.gesture)
         }
     }

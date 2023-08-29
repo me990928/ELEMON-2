@@ -14,7 +14,22 @@ class AccountViewModel: ObservableObject {
     
     @Published var count: Int = 0
     
+    
     // ログイン
+    func loginUser(mail:String,pass:String, completion: @escaping (Bool) -> Void){
+        
+         au.signIn(withEmail: mail, password: pass){
+            res,err in
+            if (res?.user) != nil{
+                print("success")
+                completion(false)
+            }else{
+                completion(true)
+            }
+        }
+    }
+    
+    // 登録
     func createUser(mail: String, name: String, pass: String, completion: @escaping (Bool) -> Void) {
         au.createUser(withEmail: mail, password: pass) { res, err in
             if err != nil {
