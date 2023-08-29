@@ -18,7 +18,7 @@ class AccountViewModel: ObservableObject {
     // ログイン
     func loginUser(mail:String,pass:String, completion: @escaping (Bool) -> Void){
         
-         au.signIn(withEmail: mail, password: pass){
+         au.signIn(withEmail: self.sanitizeText(data: mail), password: self.sanitizeText(data: pass)){
             res,err in
             if (res?.user) != nil{
                 print("success")
@@ -31,7 +31,7 @@ class AccountViewModel: ObservableObject {
     
     // 登録
     func createUser(mail: String, name: String, pass: String, completion: @escaping (Bool) -> Void) {
-        au.createUser(withEmail: mail, password: pass) { res, err in
+        au.createUser(withEmail: self.sanitizeText(data: mail), password: self.sanitizeText(data: pass)) { res, err in
             if err != nil {
                 completion(true) // エラーがある場合はtrueを渡す
             }
@@ -43,7 +43,7 @@ class AccountViewModel: ObservableObject {
                     if err == nil {
                         user.sendEmailVerification { err in
                             if err == nil {
-                                FirestoreModel().addusr(name: name, mail: mail, pass: pass, group: UUID().uuidString)
+                                FirestoreModel().addusr(name: self.sanitizeText(data: name), mail: self.sanitizeText(data: mail), pass: self.sanitizeText(data: pass), group: UUID().uuidString)
                                 completion(false) // 成功した場合はfalseを渡す
                             } else {
                                 completion(true) // エラーがある場合はtrueを渡す
