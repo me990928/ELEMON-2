@@ -12,11 +12,17 @@ struct LoginView: View {
     @State var mail: String = ""
     @State var pass: String = ""
     
+    @State var push: Bool = false
+    
     @FocusState var focus: Bool
     
     @EnvironmentObject var css: ColorThema
     
     @Binding var isLoading: Bool
+    
+    // ログインミスチェック
+    @State var isMiss: Bool = true
+    
     
     var gesture: some Gesture {
         DragGesture()
@@ -51,6 +57,14 @@ struct LoginView: View {
                         Spacer()
                     }
                     TextField("Password", text: $pass).textFieldStyle(.roundedBorder).focused($focus)
+                    
+                    if isMiss {
+                        HStack {
+                            Text("ログイン失敗").foregroundColor(.red)
+                            Spacer()
+                        }.padding(.top)
+                    }
+                    
                     Button {
                         self.isLoading.toggle()
                     } label: {

@@ -27,6 +27,11 @@ struct RegistView: View {
             }
     }
     
+    var accountVM = AccountViewModel()
+    
+    @State var inputChecked: Bool = true
+    @State var push: Bool = false
+    
     var body: some View {
         ZStack {
             GeometryReader { item in
@@ -56,11 +61,35 @@ struct RegistView: View {
                             Spacer()
                         }
                         TextField("Password", text: $pass).textFieldStyle(.roundedBorder).focused($focus)
+                        
+                        if inputChecked == false {
+                            HStack {
+                                Text("未入力項目が存在します").foregroundColor(.red)
+                                Spacer()
+                            }.padding(.top)
+                        }
+                        
                         Button {
-                            self.isResist.toggle()
+                            self.push = true
+                            
+                            print("tuukaaa-\(accountVM.isValidEmail(email: self.mail))")
                         } label: {
                             Text("REGIST").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
                         }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
+                    }.onChange(of: push) { _ in
+                        // 入力チェック
+                        if accountVM.inputCheck(data: self.name) || !(accountVM.isValidEmail(email: self.mail)) || accountVM.inputCheck(data: self.pass) {
+                            self.inputChecked = false
+                        }else{
+                            self.inputChecked = true
+                        }
+                        self.push = false
+                    }
+                    .onChange(of: inputChecked) { _ in
+                        if self.inputChecked {
+                            print("tuuka-\(self.inputChecked)")
+                            self.isResist.toggle()
+                        }
                     }
                     
                     Spacer()
