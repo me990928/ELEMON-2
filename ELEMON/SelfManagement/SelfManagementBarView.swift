@@ -28,7 +28,7 @@ struct SelfManagementBarView: View {
                         Image(systemName: "calendar")
                         Text("")
                     }.tag(1)
-                ComuView()
+                TopPage()
                     .tabItem {
                         Image(systemName: "person")
                         Text("")

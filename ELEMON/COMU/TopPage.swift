@@ -65,13 +65,13 @@ struct TopPage: View {
                     } label: {
                         Image(systemName: "plus").foregroundColor(Color(css.accent))
                     }.buttonStyle(.automatic).sheet(isPresented: $registSheet) {
-                        CreateGroup().ignoresSafeArea(.all)
+                        CreateGroup(registSheet: $registSheet, comuVM: ComuViewModel()).ignoresSafeArea(.all)
                     }
                     Spacer()
                 }.padding(.top)
                 
                 List{
-                    ListTemplate(title: "test", context: "testtest")
+                    ListTemplate(title: "ルーム名", context: "ルームの説明")
                 }.scrollContentBackground(.hidden).listStyle(.grouped)
                 
                 Spacer()
