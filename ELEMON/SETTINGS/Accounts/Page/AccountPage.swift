@@ -112,7 +112,7 @@ struct AccountPage: View {
                 }.onAppear(){
                     tabSize = bodyGeo.size.width / 2
                 }
-            }.interactiveDismissDisabled(isDisable)
+            }
             
             if isResist {
                 ProgressViews(text: "作成中...").padding()

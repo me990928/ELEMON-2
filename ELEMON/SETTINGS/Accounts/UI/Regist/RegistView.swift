@@ -34,6 +34,9 @@ struct RegistView: View {
     @State var push: Bool = false
     @State var accept: Int = 0
     
+    // ログイン判定
+    @AppStorage ("isLogin") var isLogin: Bool = false
+    
     var body: some View {
         ZStack {
             GeometryReader { item in
@@ -83,8 +86,12 @@ struct RegistView: View {
                             
                             print("tuukaaa-\(accountVM.isValidEmail(email: self.mail))")
                         } label: {
-                            Text("REGIST").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
-                        }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
+                            if !(self.isLogin) {
+                                Text("REGIST").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
+                            }else{
+                                Text("REGIST").fontWeight(.heavy).foregroundColor(.gray).frame(width: item.size.width / 2, height: 50)
+                            }
+                        }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30).disabled(self.isLogin)
                     }.onChange(of: self.push) { _ in
                         // 入力チェック
                         if accountVM.inputCheck(data: self.name) || !(accountVM.isValidEmail(email: self.mail)) || accountVM.inputCheck(data: self.pass) {
@@ -107,6 +114,9 @@ struct RegistView: View {
                                 }
                                 else{
                                     self.isResist.toggle()
+                                    accountVM.saveData(data: name, key: "userName")
+                                    accountVM.saveData(data: mail, key: "userMail")
+                                    accountVM.saveData(data: pass, key: "userPass")
                                 }
                             }
                             print("登録判定：\(self.isRegistCheck)")

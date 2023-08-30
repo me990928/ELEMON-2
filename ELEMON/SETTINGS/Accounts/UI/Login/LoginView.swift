@@ -26,6 +26,9 @@ struct LoginView: View {
     // ログインミスチェック
     @State var isMiss: Bool = false
     
+    // ログイン判定
+    @AppStorage ("isLogin") var isLogin: Bool = false
+    
     
     var gesture: some Gesture {
         DragGesture()
@@ -44,12 +47,16 @@ struct LoginView: View {
                     Spacer().frame(height: item.size.height / 15)
                     
                     
-                    Image("icon").resizable().scaledToFit().frame(width: 100,height: 100).cornerRadius(100).overlay(content: {
-                        RoundedRectangle(cornerRadius: 100).stroke(Color.gray, lineWidth: 2)
-                    }).aspectRatio(contentMode: .fit)
+                    HStack {
+                        Spacer()
+                        Image("icon").resizable().scaledToFit().frame(width: 100,height: 100).cornerRadius(100).overlay(content: {
+                            RoundedRectangle(cornerRadius: 100).stroke(Color.gray, lineWidth: 2)
+                        }).aspectRatio(contentMode: .fit)
+                        Spacer()
+                    }
                     
                     Spacer().frame(height: item.size.height / 10)
-                    
+                    if isLogin == false {
                     HStack {
                         Text("メールアドレス").foregroundColor(Color.gray)
                         Spacer()
@@ -69,12 +76,52 @@ struct LoginView: View {
                     }
                     
                     Button {
-//                        self.isLoading.toggle()
+                        //                        self.isLoading.toggle()
                         self.push += 1
                     } label: {
                         Text("LOGIN").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
                     }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
-                    
+                    }else{
+                        HStack {
+                            VStack {
+                                HStack {
+                                    Text("ユーザーネーム").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                HStack {
+                                    Text(AccountViewModel.UsersItems.name.getData).foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                            }
+                            Spacer()
+                        }
+                        .padding(.bottom)
+                        HStack {
+                            VStack {
+                                HStack {
+                                    Text("メールアドレス").foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                                HStack {
+                                    Text(AccountViewModel.UsersItems.mail.getData).foregroundColor(Color.gray)
+                                    Spacer()
+                                }
+                            }
+                            Spacer()
+                        }
+                        
+                        
+                        Button {
+                            self.accountSheet = false
+                            self.isLogin = false
+                            print(AccountViewModel.UsersItems.mail.deleteData)
+                            print(AccountViewModel.UsersItems.pass.deleteData)
+                            print(AccountViewModel.UsersItems.name.deleteData)
+                            print(AccountViewModel.UsersItems.uuid.deleteData)
+                        } label: {
+                            Text("LOGOUT").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
+                        }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
+                    }
                     
                     Spacer()
 
@@ -90,12 +137,16 @@ struct LoginView: View {
                                 isMiss = false
                                 self.isLoading.toggle()
                                 self.accountSheet = false
+                                self.isLogin = true
                                 // コミュページへ
                                 viewNum.selectedTabNum = 2
                             }
                         }
                     }
             }.gesture(self.gesture)
+                .onAppear(){
+                    print(AccountViewModel.UsersItems.name.getData)
+                }
         }
     }
 }

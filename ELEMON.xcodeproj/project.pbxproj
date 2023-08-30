@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		25A20DF22A9D34CD0050937D /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DF12A9D34CD0050937D /* AccountViewModel.swift */; };
+		25A20DF72A9F138E0050937D /* TopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DF62A9F138E0050937D /* TopPage.swift */; };
+		25A20DF92A9F1F100050937D /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DF82A9F1F100050937D /* CreateGroup.swift */; };
 		25A766492A8B6E64000EEDA4 /* dateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766482A8B6E64000EEDA4 /* dateManager.swift */; };
 		25A7664F2A8B71F2000EEDA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */; };
 		25A766512A8B7241000EEDA4 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766502A8B7240000EEDA4 /* headerView.swift */; };
@@ -132,6 +134,8 @@
 
 /* Begin PBXFileReference section */
 		25A20DF12A9D34CD0050937D /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		25A20DF62A9F138E0050937D /* TopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPage.swift; sourceTree = "<group>"; };
+		25A20DF82A9F1F100050937D /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		25A766482A8B6E64000EEDA4 /* dateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateManager.swift; sourceTree = "<group>"; };
 		25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		25A766502A8B7240000EEDA4 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -267,6 +271,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25A20DF52A9F136D0050937D /* COMU */ = {
+			isa = PBXGroup;
+			children = (
+				25A20DF62A9F138E0050937D /* TopPage.swift */,
+				25A20DF82A9F1F100050937D /* CreateGroup.swift */,
+			);
+			path = COMU;
+			sourceTree = "<group>";
+		};
 		25AE71D32A67CA27006AD196 /* CHAT */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +662,7 @@
 		25B239F82A67BFCE008AA303 /* ELEMON */ = {
 			isa = PBXGroup;
 			children = (
+				25A20DF52A9F136D0050937D /* COMU */,
 				25A766542A8B7429000EEDA4 /* ELEMON.entitlements */,
 				25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */,
 				25AE72662A67CA28006AD196 /* ColorThema.swift */,
@@ -859,6 +873,7 @@
 				25AE72822A67CA28006AD196 /* bodyTemperatureView.swift in Sources */,
 				25AE727B2A67CA28006AD196 /* walkSampleView.swift in Sources */,
 				25AE72802A67CA28006AD196 /* BodyView.swift in Sources */,
+				25A20DF72A9F138E0050937D /* TopPage.swift in Sources */,
 				25AE72A92A67CA28006AD196 /* GoalCount.swift in Sources */,
 				25AE72B02A67CA28006AD196 /* ProgressGraf.swift in Sources */,
 				25AE72792A67CA28006AD196 /* WeekAct.swift in Sources */,
@@ -883,6 +898,7 @@
 				25B409D32A97F74900C84B1A /* AccountPage.swift in Sources */,
 				25AE72A12A67CA28006AD196 /* HealthSleep.swift in Sources */,
 				25AE72C52A67CA28006AD196 /* FireAuth.swift in Sources */,
+				25A20DF92A9F1F100050937D /* CreateGroup.swift in Sources */,
 				25AE729D2A67CA28006AD196 /* MainSelect.swift in Sources */,
 				25AE72B22A67CA28006AD196 /* SelfManagementBarView.swift in Sources */,
 				25AE727D2A67CA28006AD196 /* WalkDetailVIew.swift in Sources */,
