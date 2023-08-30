@@ -17,7 +17,7 @@ struct ListTemplate:View{
     
     var body: some View {
         NavigationLink{
-            ChatView().navigationTitle(title)
+            ChatView(groupid: id).navigationTitle(title)
         } label:{
             VStack{
                 HStack {
@@ -52,6 +52,11 @@ struct TopPage: View {
             }
     }
     
+    @State var flag: Bool = true
+    
+    // ログイン判定
+    @AppStorage ("isLogin") var isLogin: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack{
@@ -81,7 +86,9 @@ struct TopPage: View {
                 
                 List{
                     ForEach((groupObj.freeze()).reversed()){data in
-                        ListTemplate(id: data.hostId, title: data.name, context: data.context, checked: data.checked).listRowBackground(Color.clear)
+                        if data.owner == AccountViewModel.UsersItems.uuid.getData {
+                            ListTemplate(id: data.hostId, title: data.name, context: data.context, checked: data.checked).listRowBackground(Color.clear)
+                        }
                     }.onDelete { IndexSet in
                         $groupObj.remove(atOffsets: IndexSet)
                     }
@@ -92,7 +99,16 @@ struct TopPage: View {
                 Spacer()
             }.padding().gesture(self.gesture)
         }.onAppear(){
+            if self.isLogin {
+                self.flag = false
+            }else{
+                self.flag = true
+            }
             
+            print(self.isLogin)
+        }
+        .sheet(isPresented: $flag) {
+            AccountPage(accountSheet: $flag)
         }
     }
 }

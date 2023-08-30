@@ -33,7 +33,7 @@ class ComuViewModel{
                 return
             }
             
-            var groups = Groups(hostId: uuid, name: name, context: text)
+            let groups = Groups(hostId: uuid, name: name, context: text, owner: AccountViewModel.UsersItems.uuid.getData)
             
             ComuRealmModel().addGroup(data: groups)
             

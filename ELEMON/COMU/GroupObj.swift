@@ -10,6 +10,7 @@ import RealmSwift
 
 class GroupObj: Object, Identifiable{
     @Persisted var hostId: String
+    @Persisted var owner: String
     @Persisted var name: String
     @Persisted var context: String
     @Persisted var checked: Bool = false

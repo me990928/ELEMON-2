@@ -12,6 +12,7 @@ struct Groups{
     var hostId: String
     var name: String
     var context: String
+    var owner: String
 }
 
 class ComuRealmModel: ObservableObject{
@@ -29,6 +30,7 @@ class ComuRealmModel: ObservableObject{
         groupOJ.hostId = data.hostId
         groupOJ.name = data.name
         groupOJ.context = data.context
+        groupOJ.owner = data.owner
         
         try! realm.write{
             realm.add(groupOJ)
