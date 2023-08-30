@@ -11,6 +11,9 @@
 		25A20DF72A9F138E0050937D /* TopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DF62A9F138E0050937D /* TopPage.swift */; };
 		25A20DF92A9F1F100050937D /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DF82A9F1F100050937D /* CreateGroup.swift */; };
 		25A20DFC2A9F284B0050937D /* ComuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DFB2A9F284B0050937D /* ComuViewModel.swift */; };
+		25A20DFE2A9FB99F0050937D /* GroupObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DFD2A9FB99F0050937D /* GroupObj.swift */; };
+		25A20E002A9FBE480050937D /* ComuRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DFF2A9FBE480050937D /* ComuRealmModel.swift */; };
+		25A20E032A9FD44A0050937D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20E022A9FD44A0050937D /* ChatView.swift */; };
 		25A766492A8B6E64000EEDA4 /* dateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766482A8B6E64000EEDA4 /* dateManager.swift */; };
 		25A7664F2A8B71F2000EEDA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */; };
 		25A766512A8B7241000EEDA4 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766502A8B7240000EEDA4 /* headerView.swift */; };
@@ -138,6 +141,9 @@
 		25A20DF62A9F138E0050937D /* TopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPage.swift; sourceTree = "<group>"; };
 		25A20DF82A9F1F100050937D /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		25A20DFB2A9F284B0050937D /* ComuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComuViewModel.swift; sourceTree = "<group>"; };
+		25A20DFD2A9FB99F0050937D /* GroupObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupObj.swift; sourceTree = "<group>"; };
+		25A20DFF2A9FBE480050937D /* ComuRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComuRealmModel.swift; sourceTree = "<group>"; };
+		25A20E022A9FD44A0050937D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		25A766482A8B6E64000EEDA4 /* dateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateManager.swift; sourceTree = "<group>"; };
 		25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		25A766502A8B7240000EEDA4 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -277,10 +283,21 @@
 			isa = PBXGroup;
 			children = (
 				25A20DF62A9F138E0050937D /* TopPage.swift */,
+				25A20E012A9FD4300050937D /* ChatGroup */,
 				25A20DF82A9F1F100050937D /* CreateGroup.swift */,
 				25A20DFB2A9F284B0050937D /* ComuViewModel.swift */,
+				25A20DFD2A9FB99F0050937D /* GroupObj.swift */,
+				25A20DFF2A9FBE480050937D /* ComuRealmModel.swift */,
 			);
 			path = COMU;
+			sourceTree = "<group>";
+		};
+		25A20E012A9FD4300050937D /* ChatGroup */ = {
+			isa = PBXGroup;
+			children = (
+				25A20E022A9FD44A0050937D /* ChatView.swift */,
+			);
+			path = ChatGroup;
 			sourceTree = "<group>";
 		};
 		25AE71D32A67CA27006AD196 /* CHAT */ = {
@@ -833,6 +850,7 @@
 				25AE72E02A67CEC2006AD196 /* ContentView.swift in Sources */,
 				25B409C62A97CD0100C84B1A /* ChartModel.swift in Sources */,
 				25AE72C82A67CA28006AD196 /* StatusSheet.swift in Sources */,
+				25A20DFE2A9FB99F0050937D /* GroupObj.swift in Sources */,
 				25A766532A8B7377000EEDA4 /* progress.swift in Sources */,
 				25AE72CB2A67CA28006AD196 /* MsgView.swift in Sources */,
 				25AE72B62A67CA28006AD196 /* CustomerCentor.swift in Sources */,
@@ -860,6 +878,7 @@
 				25AE72902A67CA28006AD196 /* item1.swift in Sources */,
 				25AE72952A67CA28006AD196 /* item8.swift in Sources */,
 				25AE728D2A67CA28006AD196 /* MindFullNess.swift in Sources */,
+				25A20E002A9FBE480050937D /* ComuRealmModel.swift in Sources */,
 				25AE72B12A67CA28006AD196 /* GoalView.swift in Sources */,
 				25AE72C22A67CA28006AD196 /* TabModel.swift in Sources */,
 				25AE72A42A67CA28006AD196 /* ListViewModel.swift in Sources */,
@@ -876,6 +895,7 @@
 				25AE72AA2A67CA28006AD196 /* ProgressBar.swift in Sources */,
 				25AE72822A67CA28006AD196 /* bodyTemperatureView.swift in Sources */,
 				25AE727B2A67CA28006AD196 /* walkSampleView.swift in Sources */,
+				25A20E032A9FD44A0050937D /* ChatView.swift in Sources */,
 				25AE72802A67CA28006AD196 /* BodyView.swift in Sources */,
 				25A20DF72A9F138E0050937D /* TopPage.swift in Sources */,
 				25AE72A92A67CA28006AD196 /* GoalCount.swift in Sources */,

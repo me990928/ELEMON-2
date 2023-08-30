@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import RealmSwift
 
 class ComuViewModel{
     
@@ -15,11 +16,14 @@ class ComuViewModel{
         
         let uuid = UUID().uuidString
         
+        let date = FieldValue.serverTimestamp()
+        
         let data = [
             "hostId": uuid,
             "name": name,
             "context": text,
-            "creatAt": FieldValue.serverTimestamp()
+            "creatAt": date,
+            "lastAt": date
         ] as [String : Any]
         
         db.collection("group").addDocument(data: data) {
@@ -28,12 +32,19 @@ class ComuViewModel{
                 print (err.localizedDescription)
                 return
             }
+            
+            var groups = Groups(hostId: uuid, name: name, context: text)
+            
+            ComuRealmModel().addGroup(data: groups)
+            
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            
             complete(false)
         }
         
     }
     
-    func getGroup(){
+    func saveGroup(){
         
     }
     

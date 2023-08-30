@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CreateGroup: View {
     @State var roomName: String = ""
@@ -57,6 +58,7 @@ struct CreateGroup: View {
                         }else{
                             self.isLoading = true
                             comuVM.createGroup(name: roomName, text: context){ res in
+                                
                                 isLoading = res
                                 self.registSheet = false
                             }

@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ListTemplate:View{
     
+    let id: String
     let title: String
     let context: String
+    let checked: Bool
     
     var body: some View {
         NavigationLink{
-            Text("Sample")
+            VStack{
+                Text(id)
+                Text(title)
+                Text(context)
+            }
         } label:{
             VStack{
                 HStack {
@@ -38,6 +45,8 @@ struct TopPage: View {
     
     @FocusState var focus:Bool
     
+    @ObservedResults(GroupObj.self) var groupObj
+    
     var gesture: some Gesture {
         DragGesture()
             .onChanged { val in
@@ -56,6 +65,8 @@ struct TopPage: View {
                     } label: {
                         Image(systemName: "magnifyingglass").foregroundColor(Color(css.accent))
                     }
+                    
+                    Spacer()
 
                 }
                 HStack{
@@ -68,14 +79,24 @@ struct TopPage: View {
                         CreateGroup(registSheet: $registSheet, comuVM: ComuViewModel()).ignoresSafeArea(.all)
                     }
                     Spacer()
+                    
+                    EditButton().foregroundColor(Color(css.accent))
                 }.padding(.top)
                 
                 List{
-                    ListTemplate(title: "ルーム名", context: "ルームの説明")
-                }.scrollContentBackground(.hidden).listStyle(.grouped)
+                    ForEach((groupObj.freeze()).reversed()){data in
+                        ListTemplate(id: data.hostId, title: data.name, context: data.context, checked: data.checked).listRowBackground(Color.clear)
+                    }.onDelete { IndexSet in
+                        $groupObj.remove(atOffsets: IndexSet)
+                    }
+                }.scrollContentBackground(.hidden).listStyle(.grouped).refreshable {
+                    
+                }
                 
                 Spacer()
             }.padding().gesture(self.gesture)
+        }.onAppear(){
+            
         }
     }
 }
