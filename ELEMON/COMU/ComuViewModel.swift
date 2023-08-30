@@ -33,4 +33,8 @@ class ComuViewModel{
         
     }
     
+    func getGroup(){
+        
+    }
+    
 }

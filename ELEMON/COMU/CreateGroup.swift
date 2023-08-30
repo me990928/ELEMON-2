@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateGroup: View {
     @State var roomName: String = ""
     @State var context: String = ""
+    @State var inputChecke: Bool = false
     
     @State var isLoading: Bool = false
     
@@ -51,14 +52,25 @@ struct CreateGroup: View {
                     }
                     
                     Button {
-                        self.isLoading = true
-                        comuVM.createGroup(name: roomName, text: context){ res in
-                            isLoading = res
-                            self.registSheet = false
+                        if roomName == "" || context == "" {
+                            self.inputChecke = true
+                        }else{
+                            self.isLoading = true
+                            comuVM.createGroup(name: roomName, text: context){ res in
+                                isLoading = res
+                                self.registSheet = false
+                            }
                         }
                     } label: {
                             Text("REGIST").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
                     }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
+                        .alert("エラー",isPresented: $inputChecke) {
+                            Button("了解"){
+                                
+                            }
+                        } message: {
+                            Text("未入力があります")
+                        }
                     
                     Spacer()
                 }.padding()
