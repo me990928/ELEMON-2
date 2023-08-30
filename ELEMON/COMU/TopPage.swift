@@ -17,11 +17,7 @@ struct ListTemplate:View{
     
     var body: some View {
         NavigationLink{
-            VStack{
-                Text(id)
-                Text(title)
-                Text(context)
-            }
+            ChatView().navigationTitle(title)
         } label:{
             VStack{
                 HStack {
