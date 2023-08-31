@@ -17,6 +17,6 @@ struct CharView: View {
 
 struct CharView_Previews: PreviewProvider {
     static var previews: some View {
-        CharView().environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel())
+        CharView().environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel())
     }
 }

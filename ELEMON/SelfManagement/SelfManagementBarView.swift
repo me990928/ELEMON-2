@@ -45,6 +45,6 @@ struct SelfManagementBarView: View {
 
 struct SelfManagementView_Previews: PreviewProvider {
     static var previews: some View {
-        SelfManagementBarView().environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel()).environmentObject(ColorThema()).environmentObject(ViewState())
+        SelfManagementBarView().environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel()).environmentObject(ColorThema()).environmentObject(ViewState())
     }
 }

@@ -15,32 +15,6 @@ class FireAuthModel:ObservableObject{
     @Published var registFlag:Bool = true
     @Published var loginFlag:Bool = false
     
-    // 登録
-    func registUser(mail:String, pass:String, name:String){
-        au.createUser(withEmail: mail, password: pass){ res,err in
-                
-                if let user = res?.user {
-                    let req = user.createProfileChangeRequest()
-                    req.displayName = name
-                    req.commitChanges{ err in
-                        
-                        if err == nil {
-                            user.sendEmailVerification() { err in
-                                if err == nil {
-                                    print("success")
-                                    self.registFlag = false
-                                    FirestoreModel().addusr(name: name, mail: mail, pass: pass, group: "")
-                                }
-                            }
-                        }
-                        
-                    }
-                    
-                }
-                
-            }
-    }
-    
     // ログイン
     func loginUser(mail:String,pass:String){
         
@@ -107,11 +81,5 @@ class FireAuthModel:ObservableObject{
         let res = try await au.signIn(withEmail: email, password: pass)
 //        let uid = res.user.uid
         return "1"
-    }
-    
-    func regist(email:String,pass:String,name:String)async -> Bool {
-        let res = try await registUser(mail: email, pass: pass, name: name)
-//        let res2 = try await au.
-        return false
     }
 }

@@ -323,6 +323,6 @@ struct hartsSampleView: View {
 
 struct hartsSampleView_Previews: PreviewProvider {
     static var previews: some View {
-        hartsSampleView().environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel())
+        hartsSampleView().environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel())
     }
 }

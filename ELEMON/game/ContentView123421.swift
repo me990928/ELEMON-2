@@ -61,6 +61,6 @@ struct ContentView123421: View {
 }
 struct ContentView_Previews12121: PreviewProvider {
     static var previews: some View {
-        ContentView123421().environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel())
+        ContentView123421().environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(TabModel())
     }
 }

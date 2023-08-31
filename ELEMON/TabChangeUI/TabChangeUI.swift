@@ -170,6 +170,6 @@ struct TabChangeUI: View {
 
 struct ContentView_Previews34: PreviewProvider {
     static var previews: some View {
-        TabChangeUI().environmentObject(TabModel()).environmentObject(FirestoreModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(ColorThema())
+        TabChangeUI().environmentObject(TabModel()).environmentObject(FireAuthModel()).environmentObject(HealthSleep()).environmentObject(ColorThema())
     }
 }

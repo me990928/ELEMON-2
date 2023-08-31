@@ -22,17 +22,6 @@
 		25A766532A8B7377000EEDA4 /* progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766522A8B7377000EEDA4 /* progress.swift */; };
 		25AE71D02A67C963006AD196 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 25AE71CF2A67C963006AD196 /* Realm */; };
 		25AE71D22A67C963006AD196 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 25AE71D12A67C963006AD196 /* RealmSwift */; };
-		25AE72672A67CA28006AD196 /* SerchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71D62A67CA27006AD196 /* SerchResult.swift */; };
-		25AE72682A67CA28006AD196 /* ComuTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71D82A67CA27006AD196 /* ComuTopView.swift */; };
-		25AE72692A67CA28006AD196 /* GroupTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71DA2A67CA27006AD196 /* GroupTopView.swift */; };
-		25AE726A2A67CA28006AD196 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71DB2A67CA27006AD196 /* GroupCreateView.swift */; };
-		25AE726B2A67CA28006AD196 /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71DC2A67CA27006AD196 /* GroupSearchView.swift */; };
-		25AE726C2A67CA28006AD196 /* GroupChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71DD2A67CA27006AD196 /* GroupChatView.swift */; };
-		25AE726D2A67CA28006AD196 /* MokuhyoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71DF2A67CA27006AD196 /* MokuhyoTopView.swift */; };
-		25AE726E2A67CA28006AD196 /* FirestoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71E12A67CA27006AD196 /* FirestoreModel.swift */; };
-		25AE726F2A67CA28006AD196 /* MokuhyouModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71E22A67CA27006AD196 /* MokuhyouModel.swift */; };
-		25AE72702A67CA28006AD196 /* ComuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71E32A67CA27006AD196 /* ComuApp.swift */; };
-		25AE72712A67CA28006AD196 /* ComuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71E42A67CA27006AD196 /* ComuView.swift */; };
 		25AE72732A67CA28006AD196 /* HeartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71E92A67CA28006AD196 /* HeartViewModel.swift */; };
 		25AE72742A67CA28006AD196 /* ActivityMoel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71EA2A67CA28006AD196 /* ActivityMoel.swift */; };
 		25AE72752A67CA28006AD196 /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE71EB2A67CA28006AD196 /* HealthViewModel.swift */; };
@@ -99,13 +88,11 @@
 		25AE72B22A67CA28006AD196 /* SelfManagementBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72372A67CA28006AD196 /* SelfManagementBarView.swift */; };
 		25AE72B32A67CA28006AD196 /* SelfManagementTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72382A67CA28006AD196 /* SelfManagementTestView.swift */; };
 		25AE72B42A67CA28006AD196 /* PrivacyPorisy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE723B2A67CA28006AD196 /* PrivacyPorisy.swift */; };
-		25AE72B52A67CA28006AD196 /* ComuSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE723C2A67CA28006AD196 /* ComuSetView.swift */; };
 		25AE72B62A67CA28006AD196 /* CustomerCentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE723D2A67CA28006AD196 /* CustomerCentor.swift */; };
 		25AE72B72A67CA28006AD196 /* Pri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE723E2A67CA28006AD196 /* Pri.swift */; };
 		25AE72B82A67CA28006AD196 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE723F2A67CA28006AD196 /* settings.swift */; };
 		25AE72B92A67CA28006AD196 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72402A67CA28006AD196 /* SwiftUIView.swift */; };
 		25AE72BA2A67CA28006AD196 /* QandaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72412A67CA28006AD196 /* QandaView.swift */; };
-		25AE72BB2A67CA28006AD196 /* account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72422A67CA28006AD196 /* account.swift */; };
 		25AE72BC2A67CA28006AD196 /* InquiryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72432A67CA28006AD196 /* InquiryFormView.swift */; };
 		25AE72BD2A67CA28006AD196 /* page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72442A67CA28006AD196 /* page4.swift */; };
 		25AE72BF2A67CA28006AD196 /* TabChangeUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AE72482A67CA28006AD196 /* TabChangeUIApp.swift */; };
@@ -153,17 +140,6 @@
 		25A766502A8B7240000EEDA4 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
 		25A766522A8B7377000EEDA4 /* progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = progress.swift; sourceTree = "<group>"; };
 		25A766542A8B7429000EEDA4 /* ELEMON.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ELEMON.entitlements; sourceTree = "<group>"; };
-		25AE71D62A67CA27006AD196 /* SerchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerchResult.swift; sourceTree = "<group>"; };
-		25AE71D82A67CA27006AD196 /* ComuTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComuTopView.swift; sourceTree = "<group>"; };
-		25AE71DA2A67CA27006AD196 /* GroupTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTopView.swift; sourceTree = "<group>"; };
-		25AE71DB2A67CA27006AD196 /* GroupCreateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
-		25AE71DC2A67CA27006AD196 /* GroupSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSearchView.swift; sourceTree = "<group>"; };
-		25AE71DD2A67CA27006AD196 /* GroupChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupChatView.swift; sourceTree = "<group>"; };
-		25AE71DF2A67CA27006AD196 /* MokuhyoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MokuhyoTopView.swift; sourceTree = "<group>"; };
-		25AE71E12A67CA27006AD196 /* FirestoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreModel.swift; sourceTree = "<group>"; };
-		25AE71E22A67CA27006AD196 /* MokuhyouModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MokuhyouModel.swift; sourceTree = "<group>"; };
-		25AE71E32A67CA27006AD196 /* ComuApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComuApp.swift; sourceTree = "<group>"; };
-		25AE71E42A67CA27006AD196 /* ComuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComuView.swift; sourceTree = "<group>"; };
 		25AE71E92A67CA28006AD196 /* HeartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewModel.swift; sourceTree = "<group>"; };
 		25AE71EA2A67CA28006AD196 /* ActivityMoel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityMoel.swift; sourceTree = "<group>"; };
 		25AE71EB2A67CA28006AD196 /* HealthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
@@ -230,13 +206,11 @@
 		25AE72372A67CA28006AD196 /* SelfManagementBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfManagementBarView.swift; sourceTree = "<group>"; };
 		25AE72382A67CA28006AD196 /* SelfManagementTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfManagementTestView.swift; sourceTree = "<group>"; };
 		25AE723B2A67CA28006AD196 /* PrivacyPorisy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPorisy.swift; sourceTree = "<group>"; };
-		25AE723C2A67CA28006AD196 /* ComuSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComuSetView.swift; sourceTree = "<group>"; };
 		25AE723D2A67CA28006AD196 /* CustomerCentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCentor.swift; sourceTree = "<group>"; };
 		25AE723E2A67CA28006AD196 /* Pri.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pri.swift; sourceTree = "<group>"; };
 		25AE723F2A67CA28006AD196 /* settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		25AE72402A67CA28006AD196 /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		25AE72412A67CA28006AD196 /* QandaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandaView.swift; sourceTree = "<group>"; };
-		25AE72422A67CA28006AD196 /* account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = account.swift; sourceTree = "<group>"; };
 		25AE72432A67CA28006AD196 /* InquiryFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InquiryFormView.swift; sourceTree = "<group>"; };
 		25AE72442A67CA28006AD196 /* page4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = page4.swift; sourceTree = "<group>"; };
 		25AE72482A67CA28006AD196 /* TabChangeUIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabChangeUIApp.swift; sourceTree = "<group>"; };
@@ -312,72 +286,6 @@
 				25A20E072AA001260050937D /* SerchView.swift */,
 			);
 			path = SerchGroup;
-			sourceTree = "<group>";
-		};
-		25AE71D32A67CA27006AD196 /* CHAT */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71D42A67CA27006AD196 /* Comu */,
-			);
-			path = CHAT;
-			sourceTree = "<group>";
-		};
-		25AE71D42A67CA27006AD196 /* Comu */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71D52A67CA27006AD196 /* ViewModel */,
-				25AE71D72A67CA27006AD196 /* ComuTop */,
-				25AE71E02A67CA27006AD196 /* Model */,
-				25AE71E32A67CA27006AD196 /* ComuApp.swift */,
-				25AE71E42A67CA27006AD196 /* ComuView.swift */,
-			);
-			path = Comu;
-			sourceTree = "<group>";
-		};
-		25AE71D52A67CA27006AD196 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71D62A67CA27006AD196 /* SerchResult.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		25AE71D72A67CA27006AD196 /* ComuTop */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71D82A67CA27006AD196 /* ComuTopView.swift */,
-				25AE71D92A67CA27006AD196 /* Group */,
-				25AE71DE2A67CA27006AD196 /* Mokuhyo */,
-			);
-			path = ComuTop;
-			sourceTree = "<group>";
-		};
-		25AE71D92A67CA27006AD196 /* Group */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71DA2A67CA27006AD196 /* GroupTopView.swift */,
-				25AE71DB2A67CA27006AD196 /* GroupCreateView.swift */,
-				25AE71DC2A67CA27006AD196 /* GroupSearchView.swift */,
-				25AE71DD2A67CA27006AD196 /* GroupChatView.swift */,
-			);
-			path = Group;
-			sourceTree = "<group>";
-		};
-		25AE71DE2A67CA27006AD196 /* Mokuhyo */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71DF2A67CA27006AD196 /* MokuhyoTopView.swift */,
-			);
-			path = Mokuhyo;
-			sourceTree = "<group>";
-		};
-		25AE71E02A67CA27006AD196 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				25AE71E12A67CA27006AD196 /* FirestoreModel.swift */,
-				25AE71E22A67CA27006AD196 /* MokuhyouModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		25AE71E72A67CA28006AD196 /* page1 */ = {
@@ -596,13 +504,11 @@
 			isa = PBXGroup;
 			children = (
 				25AE723B2A67CA28006AD196 /* PrivacyPorisy.swift */,
-				25AE723C2A67CA28006AD196 /* ComuSetView.swift */,
 				25AE723D2A67CA28006AD196 /* CustomerCentor.swift */,
 				25AE723E2A67CA28006AD196 /* Pri.swift */,
 				25AE723F2A67CA28006AD196 /* settings.swift */,
 				25AE72402A67CA28006AD196 /* SwiftUIView.swift */,
 				25AE72412A67CA28006AD196 /* QandaView.swift */,
-				25AE72422A67CA28006AD196 /* account.swift */,
 				25AE72432A67CA28006AD196 /* InquiryFormView.swift */,
 			);
 			path = ContentPage;
@@ -702,7 +608,6 @@
 				25AE72662A67CA28006AD196 /* ColorThema.swift */,
 				25AE72DF2A67CEC2006AD196 /* ContentView.swift */,
 				25B239F92A67BFCE008AA303 /* ELEMONApp.swift */,
-				25AE71D32A67CA27006AD196 /* CHAT */,
 				25AE72502A67CA28006AD196 /* FireModel */,
 				25AE72532A67CA28006AD196 /* game */,
 				25AE71E72A67CA28006AD196 /* page1 */,
@@ -858,7 +763,6 @@
 				25AE728B2A67CA28006AD196 /* graf.swift in Sources */,
 				25AE729F2A67CA28006AD196 /* Date.swift in Sources */,
 				25AE72D02A67CA28006AD196 /* MenuView.swift in Sources */,
-				25AE72712A67CA28006AD196 /* ComuView.swift in Sources */,
 				25A20DFC2A9F284B0050937D /* ComuViewModel.swift in Sources */,
 				25AE72AC2A67CA28006AD196 /* ProgressAddView.swift in Sources */,
 				25AE72E02A67CEC2006AD196 /* ContentView.swift in Sources */,
@@ -872,10 +776,8 @@
 				25AE729E2A67CA28006AD196 /* Page1View.swift in Sources */,
 				25AE72752A67CA28006AD196 /* HealthViewModel.swift in Sources */,
 				25A20E082AA001260050937D /* SerchView.swift in Sources */,
-				25AE72BB2A67CA28006AD196 /* account.swift in Sources */,
 				25AE72A02A67CA28006AD196 /* HKRepository.swift in Sources */,
 				25AE728F2A67CA28006AD196 /* item5.swift in Sources */,
-				25AE72702A67CA28006AD196 /* ComuApp.swift in Sources */,
 				25AE72D52A67CA28006AD196 /* ColorThema.swift in Sources */,
 				25AE729B2A67CA28006AD196 /* page1ViewModel.swift in Sources */,
 				25AE72812A67CA28006AD196 /* bodyFatPercentageView.swift in Sources */,
@@ -899,14 +801,11 @@
 				25AE72A42A67CA28006AD196 /* ListViewModel.swift in Sources */,
 				25B239FA2A67BFCE008AA303 /* ELEMONApp.swift in Sources */,
 				25AE72AD2A67CA28006AD196 /* TodoList.swift in Sources */,
-				25AE72682A67CA28006AD196 /* ComuTopView.swift in Sources */,
 				25AE72932A67CA28006AD196 /* item6.swift in Sources */,
 				25AE72C92A67CA28006AD196 /* EatsSheet.swift in Sources */,
 				25AE72CF2A67CA28006AD196 /* ContentView123421.swift in Sources */,
-				25AE72692A67CA28006AD196 /* GroupTopView.swift in Sources */,
 				25AE727A2A67CA28006AD196 /* DayAct.swift in Sources */,
 				25AE72BA2A67CA28006AD196 /* QandaView.swift in Sources */,
-				25AE726D2A67CA28006AD196 /* MokuhyoTopView.swift in Sources */,
 				25AE72AA2A67CA28006AD196 /* ProgressBar.swift in Sources */,
 				25AE72822A67CA28006AD196 /* bodyTemperatureView.swift in Sources */,
 				25AE727B2A67CA28006AD196 /* walkSampleView.swift in Sources */,
@@ -918,20 +817,16 @@
 				25AE72792A67CA28006AD196 /* WeekAct.swift in Sources */,
 				25AE72732A67CA28006AD196 /* HeartViewModel.swift in Sources */,
 				25AE72A22A67CA28006AD196 /* GoalViewModel.swift in Sources */,
-				25AE726A2A67CA28006AD196 /* GroupCreateView.swift in Sources */,
 				25AE72852A67CA28006AD196 /* CalView.swift in Sources */,
 				25AE72BF2A67CA28006AD196 /* TabChangeUIApp.swift in Sources */,
 				25AE72B92A67CA28006AD196 /* SwiftUIView.swift in Sources */,
 				25AE72922A67CA28006AD196 /* item4.swift in Sources */,
 				25A766512A8B7241000EEDA4 /* headerView.swift in Sources */,
 				25AE72762A67CA28006AD196 /* WaterView.swift in Sources */,
-				25AE726B2A67CA28006AD196 /* GroupSearchView.swift in Sources */,
 				25AE72C32A67CA28006AD196 /* TabUIView.swift in Sources */,
 				25AE729A2A67CA28006AD196 /* Heart.swift in Sources */,
 				25AE72772A67CA28006AD196 /* BedSampleView.swift in Sources */,
 				25AE72C02A67CA28006AD196 /* TabChangeUI.swift in Sources */,
-				25AE726F2A67CA28006AD196 /* MokuhyouModel.swift in Sources */,
-				25AE726E2A67CA28006AD196 /* FirestoreModel.swift in Sources */,
 				25AE72782A67CA28006AD196 /* MindFullnessSampleView.swift in Sources */,
 				25AE72C72A67CA28006AD196 /* gameApp.swift in Sources */,
 				25B409D32A97F74900C84B1A /* AccountPage.swift in Sources */,
@@ -953,7 +848,6 @@
 				25AE728A2A67CA28006AD196 /* LineMarke.swift in Sources */,
 				25AE72882A67CA28006AD196 /* SleepGraf.swift in Sources */,
 				25AE729C2A67CA28006AD196 /* SubSelector.swift in Sources */,
-				25AE72B52A67CA28006AD196 /* ComuSetView.swift in Sources */,
 				25AE72B72A67CA28006AD196 /* Pri.swift in Sources */,
 				25AE72862A67CA28006AD196 /* ChartView.swift in Sources */,
 				25AE72BD2A67CA28006AD196 /* page4.swift in Sources */,
@@ -963,10 +857,8 @@
 				25AE72B82A67CA28006AD196 /* settings.swift in Sources */,
 				25AE72D22A67CA28006AD196 /* CharView.swift in Sources */,
 				25B409D02A97F6FE00C84B1A /* LoginView.swift in Sources */,
-				25AE726C2A67CA28006AD196 /* GroupChatView.swift in Sources */,
 				25A20DF22A9D34CD0050937D /* AccountViewModel.swift in Sources */,
 				25AE727E2A67CA28006AD196 /* hartsSampleView.swift in Sources */,
-				25AE72672A67CA28006AD196 /* SerchResult.swift in Sources */,
 				25A20E052A9FE7CB0050937D /* ChatModel.swift in Sources */,
 				25AE72962A67CA28006AD196 /* prot.swift in Sources */,
 				25AE72A72A67CA28006AD196 /* GoalPage.swift in Sources */,
