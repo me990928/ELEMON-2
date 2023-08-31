@@ -90,7 +90,7 @@ struct ChatView: View {
                         Messages(text: item.text, uuid: item.userId, name: item.name).listRowBackground(Color.clear).listRowSeparator(.hidden)
                     }
                     
-                    Spacer().frame(height: 0).id(0).listRowBackground(Color.clear).listRowSeparator(.hidden)
+                    Spacer().frame(height: 20).id(0).listRowBackground(Color.clear).listRowSeparator(.hidden)
                 }.scrollContentBackground(.hidden).listStyle(.plain)
                     .onAppear(){
                         ScrollViewProxy.scrollTo(0)

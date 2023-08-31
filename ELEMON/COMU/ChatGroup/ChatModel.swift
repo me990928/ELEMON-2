@@ -86,4 +86,8 @@ class ChatModel:ObservableObject{
         }
     }
     
+    func groupSerch(){
+        
+    }
+    
 }

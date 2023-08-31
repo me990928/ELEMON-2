@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct Groups{
+struct Groups:Hashable{
     var hostId: String
     var name: String
     var context: String
@@ -34,12 +34,27 @@ class ComuRealmModel: ObservableObject{
         
         try! realm.write{
             realm.add(groupOJ)
+            print("123")
         }
     }
     
     func getGroups()-> Results<GroupObj>{
         let data = realm.objects(GroupObj.self)
         return data
+    }
+    
+    func deleteGroup(){
+        // ログアウト処理用
+        do {
+            try realm.write() {
+                
+                let results = realm.objects(GroupObj.self)
+                
+                realm.delete(results)
+            }
+        } catch {
+            print("err")
+        }
     }
     
 }

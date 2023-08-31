@@ -36,6 +36,7 @@ struct ListTemplate:View{
 struct TopPage: View {
     @State var text: String = ""
     @State var registSheet: Bool = false
+    @State var searchSheet: Bool = false
     
     @EnvironmentObject var css: ColorThema
     
@@ -63,12 +64,15 @@ struct TopPage: View {
                 HStack {
                     TextField("ルーム名", text: $text).textFieldStyle(.roundedBorder).focused($focus)
                     Button {
+                        self.searchSheet.toggle()
                     } label: {
                         Image(systemName: "magnifyingglass").foregroundColor(Color(css.accent))
                     }
                     
                     Spacer()
 
+                }.sheet(isPresented: $searchSheet) {
+                    SerchView(text: $text)
                 }
                 HStack{
                     Text("トークルーム").foregroundColor(.gray)
@@ -86,15 +90,11 @@ struct TopPage: View {
                 
                 List{
                     ForEach((groupObj.freeze()).reversed()){data in
-                        if data.owner == AccountViewModel.UsersItems.uuid.getData {
-                            ListTemplate(id: data.hostId, title: data.name, context: data.context, checked: data.checked).listRowBackground(Color.clear)
-                        }
+                        ListTemplate(id: data.hostId, title: data.name, context: data.context, checked: data.checked).listRowBackground(Color.clear)
                     }.onDelete { IndexSet in
                         $groupObj.remove(atOffsets: IndexSet)
                     }
-                }.scrollContentBackground(.hidden).listStyle(.grouped).refreshable {
-                    
-                }
+                }.scrollContentBackground(.hidden).listStyle(.grouped)
                 
                 Spacer()
             }.padding().gesture(self.gesture)

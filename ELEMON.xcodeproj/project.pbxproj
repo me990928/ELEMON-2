@@ -15,6 +15,7 @@
 		25A20E002A9FBE480050937D /* ComuRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DFF2A9FBE480050937D /* ComuRealmModel.swift */; };
 		25A20E032A9FD44A0050937D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20E022A9FD44A0050937D /* ChatView.swift */; };
 		25A20E052A9FE7CB0050937D /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20E042A9FE7CB0050937D /* ChatModel.swift */; };
+		25A20E082AA001260050937D /* SerchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20E072AA001260050937D /* SerchView.swift */; };
 		25A766492A8B6E64000EEDA4 /* dateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766482A8B6E64000EEDA4 /* dateManager.swift */; };
 		25A7664F2A8B71F2000EEDA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */; };
 		25A766512A8B7241000EEDA4 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A766502A8B7240000EEDA4 /* headerView.swift */; };
@@ -146,6 +147,7 @@
 		25A20DFF2A9FBE480050937D /* ComuRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComuRealmModel.swift; sourceTree = "<group>"; };
 		25A20E022A9FD44A0050937D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		25A20E042A9FE7CB0050937D /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		25A20E072AA001260050937D /* SerchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerchView.swift; sourceTree = "<group>"; };
 		25A766482A8B6E64000EEDA4 /* dateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateManager.swift; sourceTree = "<group>"; };
 		25A7664E2A8B71F2000EEDA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		25A766502A8B7240000EEDA4 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		25A20DF52A9F136D0050937D /* COMU */ = {
 			isa = PBXGroup;
 			children = (
+				25A20E062AA001080050937D /* SerchGroup */,
 				25A20DF62A9F138E0050937D /* TopPage.swift */,
 				25A20E012A9FD4300050937D /* ChatGroup */,
 				25A20DF82A9F1F100050937D /* CreateGroup.swift */,
@@ -301,6 +304,14 @@
 				25A20E042A9FE7CB0050937D /* ChatModel.swift */,
 			);
 			path = ChatGroup;
+			sourceTree = "<group>";
+		};
+		25A20E062AA001080050937D /* SerchGroup */ = {
+			isa = PBXGroup;
+			children = (
+				25A20E072AA001260050937D /* SerchView.swift */,
+			);
+			path = SerchGroup;
 			sourceTree = "<group>";
 		};
 		25AE71D32A67CA27006AD196 /* CHAT */ = {
@@ -860,6 +871,7 @@
 				25AE72A32A67CA28006AD196 /* ProgressViewModel.swift in Sources */,
 				25AE729E2A67CA28006AD196 /* Page1View.swift in Sources */,
 				25AE72752A67CA28006AD196 /* HealthViewModel.swift in Sources */,
+				25A20E082AA001260050937D /* SerchView.swift in Sources */,
 				25AE72BB2A67CA28006AD196 /* account.swift in Sources */,
 				25AE72A02A67CA28006AD196 /* HKRepository.swift in Sources */,
 				25AE728F2A67CA28006AD196 /* item5.swift in Sources */,

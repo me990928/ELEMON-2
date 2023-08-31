@@ -9,7 +9,9 @@ import SwiftUI
 import FirebaseFirestore
 import RealmSwift
 
-class ComuViewModel{
+class ComuViewModel:ObservableObject{
+    
+    @Published var groups = [Groups]()
     
     func createGroup(name: String, text: String, complete: @escaping (Bool)->Void){
         let db = Firestore.firestore()
@@ -44,8 +46,39 @@ class ComuViewModel{
         
     }
     
-    func saveGroup(){
+    func searchGroup(inputText: String, completion: @escaping ([Groups]) -> Void) {
+        let db = Firestore.firestore()
         
+        if(inputText == ""){
+            db.collection("group").whereField("name", isEqualTo: inputText).getDocuments() { snap, err in
+                if let snap = snap {
+                    var groups: [Groups] = []
+                    for snaps in snap.documents {
+                        let doc = snaps.data()
+                        let hostid = doc["hostId"] as! String
+                        let name = doc["name"] as! String
+                        let context = doc["context"] as! String
+                        let owner = "other"
+                        groups.append(Groups(hostId: hostid, name: name, context: context, owner: owner))
+                    }
+                    completion(groups)
+                }
+            }
+        }else{
+            db.collection("group").order(by: "name").start(at: [inputText]).end(at: [inputText + "\u{f8ff}"]).getDocuments() { snap, err in
+                if let snap = snap {
+                    var groups: [Groups] = []
+                    for snaps in snap.documents {
+                        let doc = snaps.data()
+                        let hostid = doc["hostId"] as! String
+                        let name = doc["name"] as! String
+                        let context = doc["context"] as! String
+                        let owner = "other"
+                        groups.append(Groups(hostId: hostid, name: name, context: context, owner: owner))
+                    }
+                    completion(groups)
+                }
+            }
+        }
     }
-    
 }
