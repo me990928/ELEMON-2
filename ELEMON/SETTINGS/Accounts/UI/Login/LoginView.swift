@@ -118,6 +118,7 @@ struct LoginView: View {
                             print(AccountViewModel.UsersItems.pass.deleteData)
                             print(AccountViewModel.UsersItems.name.deleteData)
                             print(AccountViewModel.UsersItems.uuid.deleteData)
+                            ComuRealmModel().deleteGroup()
                         } label: {
                             Text("LOGOUT").fontWeight(.heavy).foregroundColor(.white).frame(width: item.size.width / 2, height: 50)
                         }.background(Color(self.css.accent)).cornerRadius(10).padding(.top, 30)
