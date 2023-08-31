@@ -86,11 +86,11 @@ struct ChatView: View {
             ScrollViewReader { ScrollViewProxy in
                 
                 List{
-                    ForEach(self.chatFVM.messages, id: \.self) { item in
+                    ForEach(self.chatFVM.messages.reversed(), id: \.self) { item in
                         Messages(text: item.text, uuid: item.userId, name: item.name).listRowBackground(Color.clear).listRowSeparator(.hidden)
                     }
                     
-                    Spacer().frame(height: 20).id(0).listRowBackground(Color.clear).listRowSeparator(.hidden)
+                    Spacer().frame(height: 50).id(0).listRowBackground(Color.clear).listRowSeparator(.hidden)
                 }.scrollContentBackground(.hidden).listStyle(.plain)
                     .onAppear(){
                         ScrollViewProxy.scrollTo(0)

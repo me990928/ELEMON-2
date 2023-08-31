@@ -40,21 +40,24 @@ class ChatModel:ObservableObject{
             }
             
             if let snap = snap {
-                for i in snap.documentChanges {
-                    if i.type == .added {
-                        let userId = i.document.get("userID") as! String
-                        let text = i.document.get("text") as! String
-                        let groupId = i.document.get("groupID") as! String
-                        let createdAt = i.document.get("createAt", serverTimestampBehavior: .estimate) as! Timestamp
-                        let createDate = createdAt.dateValue()
-                        let ownerName = i.document.get("ownerName") as! String
-                        let id = i.document.documentID
-                        self.messages.append(Comments(ID: id, userId: userId, name: ownerName, text: text, groupId: groupId, createAt: createDate))
+                DispatchQueue.main.async {
+                    
+                    for i in snap.documentChanges {
+                        if i.type == .added {
+                            let userId = i.document.get("userID") as! String
+                            let text = i.document.get("text") as! String
+                            let groupId = i.document.get("groupID") as! String
+                            let createdAt = i.document.get("createAt", serverTimestampBehavior: .estimate) as! Timestamp
+                            let createDate = createdAt.dateValue()
+                            let ownerName = i.document.get("ownerName") as! String
+                            let id = i.document.documentID
+                            self.messages.append(Comments(ID: id, userId: userId, name: ownerName, text: text, groupId: groupId, createAt: createDate))
+                        }
+                    }
+                    self.messages.sort{before,after in
+                        return before.createAt > after.createAt ? true :false
                     }
                 }
-//                self.messages.sort{before,after in
-//                    return before.createAt > after.createAt ? true :false
-//                }
             }
             
             print("realtime")

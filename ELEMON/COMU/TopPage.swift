@@ -89,7 +89,7 @@ struct TopPage: View {
                 }.padding(.top)
                 
                 List{
-                    ForEach((groupObj.freeze()).reversed()){data in
+                    ForEach((groupObj.freeze())){data in
                         ListTemplate(id: data.hostId, title: data.name, context: data.context, checked: data.checked).listRowBackground(Color.clear)
                     }.onDelete { IndexSet in
                         $groupObj.remove(atOffsets: IndexSet)
